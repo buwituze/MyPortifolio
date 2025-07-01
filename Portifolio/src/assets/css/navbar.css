@@ -1,0 +1,105 @@
+.logo{
+    display: flex;
+    gap: 10px;
+    padding-left: 10px; 
+}
+.logo i{
+    color: orange;
+    padding-top: 5px;
+    font-size: 20px;
+}
+.logo h2 {
+    padding-top: 2px;
+    font-size:22px;
+    color: white;
+}
+.logo h2 span {
+    color: orange;
+}
+.logo {
+    float: left;   
+}
+.logo p {
+    color: white;
+    font-weight: 300;
+    font-size: medium;
+    padding-left: 17px;
+}
+.list ul li {
+    font-weight: 400;
+    border: none;
+    font-size: larger;
+    
+}
+.link a {
+    text-decoration: none;
+    color: white;
+}
+.link a:hover {
+    border-radius: 5px;
+    color: orange;
+}
+.list ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 7px;
+}
+.list {
+    float: right;
+    padding-top: 2px;
+    cursor: pointer;
+}
+
+.spans {
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    padding-top: 2px;
+}
+.spans a i {
+    color: orange;
+    font-size: 22px;
+    padding: 3px;
+}
+.spans a i:hover {
+    color: orange;
+    background-color: #e7e6e6;
+    border-radius: 100%;
+}
+.link a,
+.logo h2,
+.spans a i {
+  transition: color 0.3s ease;
+}
+
+.navbar.scrolled {
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.scrolled .link a,
+.navbar.scrolled .logo h2 {
+  color: rgb(22, 12, 119);
+}
+
+.navbar {
+    background-color: whitesmoke;
+    box-shadow: none;
+    border: 2px solid #e7e6e6;
+    border-radius: 50px;
+    padding: 6px 10px;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 14%;
+    width: 81%;
+    font-family: Intel;
+    height: auto;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}

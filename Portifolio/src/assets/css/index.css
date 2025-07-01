@@ -1,0 +1,269 @@
+* {
+    margin: 0;
+}
+body {
+    flex-wrap: wrap;
+   background-color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+
+
+#home p {
+    color: black;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+    font-size: larger;
+}
+
+#home p strong {
+    color: #FFC700;
+    font-weight: 600;
+    font-size: 45px;
+    padding-left: 10%;
+}
+.Introduction {
+    margin-top: 50px;
+    padding-top: 30px;
+    padding-left: 3%;
+    width: 90%;
+    padding-bottom: 150px;
+}
+
+.Introduction p span {
+    font-size: 80px;
+    font-weight: 700;
+    color: #A259FF;
+}
+
+.Introduction .introp p{
+    width: 55%;
+}
+.main {
+    display: flex;
+    gap: 2px;
+    padding-top: 10px;
+    border-radius: 4px;
+    margin-top: 40px;
+    margin-right: 250px;
+    margin-left: 100px;    
+}
+.image {
+    background-color: #FFC700;
+    position: absolute;
+    top: 15%;
+    left: 60%;
+    margin-top: 90px;
+    width: 33%;
+    height: 70%;
+    border-radius: 50% 30% 70% 30%;
+    animation: wave 9s infinite ease-in-out;
+}
+
+@keyframes wave {
+  0%, 100% {
+    border-radius: 50% 30% 70% 30%;
+  }
+  10% {
+    border-radius: 60% 40% 50% 40%;
+  }
+  20% {
+    border-radius: 40% 50% 60% 30%;
+  }
+  30% {
+    border-radius: 55% 45% 50% 35%;
+  }
+  40% {
+    border-radius: 50% 60% 40% 50%;
+  }
+  50% {
+    border-radius: 45% 50% 55% 40%;
+  }
+  60% {
+    border-radius: 60% 50% 40% 55%;
+  }
+  70% {
+    border-radius: 50% 40% 60% 50%;
+  }
+  80% {
+    border-radius: 55% 35% 50% 45%;
+  }
+  90% {
+    border-radius: 40% 55% 45% 60%;
+  }
+}
+.image img {
+    width: 260px;
+    height: 90vh;
+    margin-top: -20%;
+    margin-left: 12%;
+}
+
+.buttons {
+    font-size: 15px;
+    margin-left: 15%;
+    margin-top: -4%;
+}
+.buttons button {
+    background-color: white;
+    color: rgb(7,7,65);
+    border: none;
+    border: 2px solid rgb(22, 12, 119);
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .buttons button:hover {
+    background-color: rgb(22, 12, 119);
+    color: orange;
+  }
+@media screen and (max-width:830px) {
+   
+ .logo h2 {
+        
+        color: black;
+        font-size: xx-large;
+        padding-left: 5px;
+    }
+    .logo {
+        float: left;
+        /* margin-top: 1px; */
+        
+    }
+    .logo p {
+        color: white;
+        font-family: merienda;
+        font-weight: 300;
+        font-size: medium;
+        padding-left: 2px;
+    }
+    .list ul li {
+        font-family: Roboto;
+        font-weight: 400;
+        font-size: larger;
+    }
+    .list ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        padding: 10px;
+        margin-left: -6%;
+        font-size: larger;
+    }
+    .list {
+        float: right;
+        padding-top: 8px;
+        
+    }
+    .nav-bar {
+        background-color: black;
+        box-shadow: 0 2px 0 0 rgba(48, 161, 231, 0.068);
+        padding-bottom: 70px;
+    
+    }
+    p {
+        color: white;
+        font-family: roboto;
+        font-weight: 300;
+        font-size: xx-large;
+    }
+    p span {
+        color: rgb(48, 161, 231);
+        font-family: roboto;
+        font-weight: 400;
+        font-size: 40px;
+    }
+    p strong {
+        font-family: merienda;
+        font-weight: 500;
+        font-size: xx-large;
+    }
+    .Introduction {
+        margin-top: 60%;
+        padding-top: 55px;
+        padding-left: 20px;
+        padding-bottom: 150px;
+    }
+    .main {
+        display: block;
+        padding-top: 10px;
+        border-radius: 4px;
+        margin-top: 40px;
+        margin-right: 50px;
+        margin-left: 50px;    
+    }
+    .image {
+         background-color: rgb(13, 53, 78);
+        position: absolute;
+        top: 10%;
+        left: 30%;
+        margin-top: 70px;
+        width: 35%;
+        height: 25%;
+        
+        border-radius: 50% 50% 50% 0;
+    
+    }
+
+    
+    .image:before {
+        position: absolute;
+        content: '';
+        top: -2px;
+        left: -2px;
+        background: linear-gradient( 45deg, blue, rgb(48, 161, 231), rgb(0, 255, 0),  rgb(50, 50, 221), rgb(0, 132, 255));
+        background-size: 400%;
+        filter: blur(5px);
+        width:calc(100% + 4px);
+        height: calc(100% + 4px);
+        z-index: -1;
+        animation: animate 10s linear infinite;
+        border-radius: 50% 50% 50% 0;
+    }
+    
+    @keyframes animate {
+        0%, 100% {
+            background-position: 0 0;
+        }
+        50% {
+            background-position: 400% 0;
+        }
+        
+    }
+    
+    
+    img {
+        position: absolute;
+        top: 3%;
+        left: 25%;
+        transform: rotate(45deg);
+        
+    }
+
+    .spans {
+        
+        position: absolute;
+        bottom: 20%;
+        left: 23%;
+        display: flex;
+        gap: 15%;
+    }
+    a i {
+        color: rgb(48, 161, 231);
+        font-size: 50px;
+        background-color: rgba(124, 122, 122, 0.589);
+        border-radius: 100%;
+        border-color: rgb(48, 161, 231);
+        padding: 10px 10px;
+    }
+    a i:hover {
+        color: white;
+        background-color: rgb(48, 161, 231);
+        /* font-size: 70px; */
+    }
+    
+}

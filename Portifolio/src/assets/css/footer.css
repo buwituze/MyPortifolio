@@ -1,0 +1,71 @@
+
+.footer-section {
+    background-color:black;
+    color: white;
+ margin-top: 7%;  
+  }
+.toppart i{
+    color: orange;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 70px;
+    font-size: 20px;
+}
+
+.toppart {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-bottom: 1px solid #575555cc;
+  }
+
+.toppart h3 {
+    color: white;
+  }
+
+.bottompart {
+    display: flex;
+    gap: 40px;
+    padding-left: 140px;
+    padding-right: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  } 
+
+.footerimage img{
+    width: 170px;
+    height: 150px;
+    padding-top: 20px;
+  }
+  ul a li {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+  }
+
+.bottompart ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+  }
+
+.bottompart ul{
+    list-style: none;
+    text-decoration: none;
+}
+.bottompart h5{
+    padding-top: 10%;
+    color: white;
+    font-size: 17px;
+    padding-bottom: 10px;
+    padding-left: 35px;
+}
+
+.sectionslist {
+    display: flex;
+    gap: 20px;
+}
+.pages {
+    padding-top: 14px;
+}
