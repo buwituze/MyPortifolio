@@ -3,21 +3,43 @@ import { useState, useEffect } from "react";
 const HeroSection = () => {
   const [currentTech, setCurrentTech] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(150);
 
   const techStack = [
     "Full-Stack Developer",
     "Machine Learning Student",
-    "React Specialist",
+    "Salesforce Admin",
     "Python Developer",
     "UI/UX Designer",
   ];
 
+  // Typing effect for tech stack
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTech((prev) => (prev + 1) % techStack.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+    const currentWord = techStack[currentTech];
+
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        if (displayText.length < currentWord.length) {
+          setDisplayText(currentWord.substring(0, displayText.length + 1));
+          setTypingSpeed(150);
+        } else {
+          setTimeout(() => setIsDeleting(true), 1500);
+        }
+      } else {
+        if (displayText.length > 0) {
+          setDisplayText(displayText.substring(0, displayText.length - 1));
+          setTypingSpeed(100);
+        } else {
+          setIsDeleting(false);
+          setCurrentTech((prev) => (prev + 1) % techStack.length);
+        }
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, currentTech, typingSpeed]);
 
   useEffect(() => {
     const handleMouseMove = (e: any) => {
@@ -28,7 +50,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center px-4 md:px-8 lg:px-12 pt-20">
+    <section className="relative min-h-screen  flex items-center px-4 md:px-8 lg:px-12 pt-20">
       {/* Animated Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-blue-900/30 to-orange-500/20 animate-pulse"></div>
 
@@ -67,13 +89,13 @@ const HeroSection = () => {
         <div className="space-y-6 text-center lg:text-left order-2 lg:order-1">
           {/* Greeting */}
           <div className="flex items-center justify-center lg:justify-start gap-2 text-lg text-white/80">
-            <span className="text-2xl animate-pulse">👋</span>
+            <span className="text-2xl animate-wave">👋</span>
             <span>Hello, I'm</span>
           </div>
 
           {/* Name Title */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
-            <span className="block bg-gradient-to-r from-orange-500 via-orange-400 via-blue-500 to-blue-600 bg-clip-text text-transparent animate-pulse drop-shadow-lg">
+            <span className="block bg-gradient-to-r from-orange-500  via-blue-500 to-blue-600 bg-clip-text text-transparent drop-shadow-lg">
               Benitha Uwituze
             </span>
           </h1>
@@ -81,8 +103,8 @@ const HeroSection = () => {
           {/* Role Container */}
           <div className="text-2xl text-white min-h-12 flex items-center justify-center lg:justify-start">
             <span className="opacity-80">I'm a </span>
-            <span className="text-orange-500 font-semibold ml-2 drop-shadow-lg">
-              {techStack[currentTech]}
+            <span className="text-orange-500 font-semibold ml-2 drop-shadow-lg min-w-max">
+              {displayText}
             </span>
             <span className="text-blue-500 font-bold ml-1 animate-pulse">
               |
@@ -162,56 +184,120 @@ const HeroSection = () => {
         {/* Right side - Image and visual elements */}
         <div className="flex justify-center items-center relative order-1 lg:order-2">
           <div className="relative w-full max-w-md">
-            {/* Morphing Background */}
-            <div
-              className="absolute inset-0 bg-gradient-to-br from-blue-500 via-orange-500 to-blue-600 rounded-full opacity-80 animate-pulse shadow-2xl shadow-orange-500/40"
-              style={{
-                borderRadius: "50% 30% 70% 40%",
-                animation: "morphing 8s ease-in-out infinite",
-              }}
-            ></div>
+            {/* Animated Hexagonal Tech Ring Background */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              {/* Outer Ring */}
+              <div className="absolute w-80 h-80 rounded-full border-2 border-orange-500/30 animate-spin-slow">
+                <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-orange-500 rounded-full animate-pulse"></div>
+                <div
+                  className="absolute -right-2 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-blue-500 rounded-full animate-pulse"
+                  style={{ animationDelay: "0.5s" }}
+                ></div>
+                <div
+                  className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-orange-500 rounded-full animate-pulse"
+                  style={{ animationDelay: "1s" }}
+                ></div>
+                <div
+                  className="absolute -left-2 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-blue-500 rounded-full animate-pulse"
+                  style={{ animationDelay: "1.5s" }}
+                ></div>
+              </div>
+
+              {/* Inner Ring */}
+              <div className="absolute w-60 h-60 rounded-full border border-blue-500/20 animate-spin-reverse">
+                <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-blue-400 rounded-full"></div>
+                <div className="absolute -right-1 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-orange-400 rounded-full"></div>
+                <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-blue-400 rounded-full"></div>
+                <div className="absolute -left-1 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-orange-400 rounded-full"></div>
+              </div>
+
+              {/* Floating Tech Icons */}
+              <div className="absolute w-96 h-96 animate-float">
+                <div className="absolute top-4 right-8 bg-slate-800/80 p-2 rounded-lg backdrop-blur-sm border border-orange-500/30">
+                  <div className="text-orange-500 text-sm font-mono">
+                    {"{ }"}
+                  </div>
+                </div>
+                <div className="absolute bottom-8 left-4 bg-slate-800/80 p-2 rounded-lg backdrop-blur-sm border border-blue-500/30">
+                  <div className="text-blue-500 text-sm font-mono">{"</>"}</div>
+                </div>
+                <div className="absolute top-16 left-8 bg-slate-800/80 p-2 rounded-lg backdrop-blur-sm border border-orange-500/30">
+                  <div className="text-orange-500 text-sm font-mono">ML</div>
+                </div>
+                <div className="absolute bottom-16 right-4 bg-slate-800/80 p-2 rounded-lg backdrop-blur-sm border border-blue-500/30">
+                  <div className="text-blue-500 text-sm font-mono">AI</div>
+                </div>
+              </div>
+            </div>
 
             {/* Profile Image */}
             <div className="relative z-10 flex justify-center items-center p-8">
-              <img
-                src="/images/Benitha Portifolio.png"
-                alt="Benitha Uwituze"
-                className="w-67 h-[400px] object-cover transition-transform duration-300 hover:-translate-y-3"
-              />
-            </div>
+              <div className="relative">
+                {/* Glow effect behind image */}
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-blue-500/20 rounded-full blur-xl animate-pulse"></div>
 
-            {/* Decorative Elements */}
-            <div className="absolute inset-0 z-20">
-              {/* Code Snippet */}
-              <div className="absolute -bottom-16 right-26 bg-slate-900/95 p-4 rounded-lg border border-orange-500/40 backdrop-blur-md shadow-2xl shadow-slate-900/80 ">
-                <pre className="text-orange-500 text-xs font-mono">
-                  {`const developer = {
+                <img
+                  src="/public/images/Benitha Portifolio.png"
+                  alt="Benitha Uwituze"
+                  className="relative w-[100%] h-[400px] object-cover transition-transform duration-300 hover:-translate-y-3 rounded-lg shadow-2xl"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Code Snippet - Positioned at bottom center */}
+          <div className="absolute -bottom-8 -left-[5%] transform -translate-x-1/2 translate-y-1/2 bg-slate-900/95 p-4 rounded-lg border border-orange-500/40 backdrop-blur-md shadow-2xl shadow-slate-900/80 z-20">
+            <pre className="text-orange-500 text-xs font-mono">
+              {`const developer = {
   name: "Benitha",
   skills: ["React", "ML", "Python"],
   passion: "Innovation"
 };`}
-                </pre>
-              </div>
-            </div>
+            </pre>
           </div>
         </div>
       </div>
 
       <style>{`
-        @keyframes morphing {
-          0%,
-          100% {
-            border-radius: 50% 30% 70% 40%;
-          }
-          25% {
-            border-radius: 30% 70% 40% 50%;
-          }
-          50% {
-            border-radius: 70% 40% 50% 30%;
-          }
-          75% {
-            border-radius: 40% 50% 30% 70%;
-          }
+        @keyframes wave {
+          0%, 100% { transform: rotate(0deg); }
+          10%, 30% { transform: rotate(14deg); }
+          20% { transform: rotate(-8deg); }
+          40% { transform: rotate(14deg); }
+          50% { transform: rotate(10deg); }
+          60% { transform: rotate(0deg); }
+        }
+        
+        .animate-wave {
+          animation: wave 2s ease-in-out infinite;
+          transform-origin: 70% 70%;
+        }
+        
+        @keyframes spin-slow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        
+        @keyframes spin-reverse {
+          from { transform: rotate(360deg); }
+          to { transform: rotate(0deg); }
+        }
+        
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-10px) rotate(2deg); }
+        }
+        
+        .animate-spin-slow {
+          animation: spin-slow 20s linear infinite;
+        }
+        
+        .animate-spin-reverse {
+          animation: spin-reverse 15s linear infinite;
+        }
+        
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
         }
       `}</style>
     </section>

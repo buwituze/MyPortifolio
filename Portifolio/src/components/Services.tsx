@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const Services = () => {
-  const [hoveredService, setHoveredService] = useState<number | null>(null);
+  const [_, setHoveredService] = useState<number | null>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const services = [
@@ -30,19 +30,19 @@ const Services = () => {
       category: "Design",
     },
     {
-      icon: "⚛️",
-      title: "Front-End Development",
+      icon: "👨‍💻",
+      title: "Full Stack Development",
       description:
-        "I build responsive and dynamic interfaces using HTML, CSS, JavaScript, and React.js.",
-      color: "from-blue-400 to-blue-600",
+        "I build complete web applications from frontend interfaces to backend systems using React.js, Node.js, and MySQL databases.",
+      color: "from-blue-400 to-green-600",
       category: "Development",
     },
     {
-      icon: "🔧",
-      title: "Back-End Development",
+      icon: "📱",
+      title: "Mobile Development",
       description:
-        "I develop robust back-end solutions with Node.js and MySQL databases.",
-      color: "from-green-500 to-green-600",
+        "I create native and cross-platform mobile applications for iOS and Android with modern frameworks and intuitive user interfaces.",
+      color: "from-indigo-500 to-purple-600",
       category: "Development",
     },
     {
@@ -160,28 +160,6 @@ const Services = () => {
                   <p className="text-white/70 text-center leading-relaxed group-hover:text-white/90 transition-colors duration-300 flex-grow">
                     {service.description}
                   </p>
-
-                  {/* Bottom Action */}
-                  <div className="mt-6 flex justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 delay-300 transform translate-y-4 group-hover:translate-y-0">
-                      <div className="flex items-center gap-2 text-orange-400 text-sm font-medium">
-                        Learn More
-                        <svg
-                          className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                        >
-                          <path
-                            d="M7 17L17 7M17 7H7M17 7V17"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
                 </div>
 
                 {/* Animated Border Lines */}

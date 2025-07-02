@@ -104,7 +104,7 @@ const SkillsSection = () => {
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 px-4 md:px-8 lg:px-12 overflow-hidden">
       {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-blue-900/20 to-orange-500/10 animate-pulse"></div>
+      {/* <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-blue-900/20 to-orange-500/10 animate-pulse"></div> */}
 
       {/* Interactive cursor follower */}
       <div

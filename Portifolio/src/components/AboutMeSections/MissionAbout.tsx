@@ -74,7 +74,7 @@ export default function MissionAbout() {
         <div className="text-center mb-16">
           <div className="inline-block">
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-4">
-              <span className="bg-gradient-to-r from-orange-500 via-orange-400 via-blue-500 to-blue-600 bg-clip-text text-transparent animate-pulse drop-shadow-lg">
+              <span className="bg-gradient-to-r from-orange-500  to-blue-600 bg-clip-text text-transparent animate-pulse drop-shadow-lg">
                 My Mission
               </span>
             </h2>
