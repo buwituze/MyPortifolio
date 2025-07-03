@@ -10,7 +10,7 @@ const AboutMe = () => {
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="mx-auto text-3xl md:text-4xl font-bold bg-blue-500 bg-clip-text text-transparent mb-4">
+          <h2 className="mx-auto mt-7 text-3xl md:text-4xl font-bold bg-blue-500 bg-clip-text text-transparent mb-4">
             So, Who Am I?
           </h2>
           {/* <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-blue-500 mx-auto rounded-full"></div> */}
