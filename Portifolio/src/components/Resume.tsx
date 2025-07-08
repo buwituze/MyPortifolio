@@ -3,9 +3,19 @@ import { ArrowRight, ExternalLink, Grid3x3, Eye } from "lucide-react";
 
 const ProjectsSection = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
-  const [showMore, setShowMore] = useState(false);
+  const [showMore, _] = useState(false);
 
   const featuredProjects = [
+    {
+      id: "skofund",
+      image: "/images/SokoFund.png",
+      title: "SokoFund",
+      description:
+        "An HR-FinTech Platform for African businesses and workforces, offering HR & Payroll Management Software plus Embedded Finance Products.",
+      link: "https://www.sokofund.com/",
+      tags: ["Frontend", "Backend"],
+      height: "h-72",
+    },
     {
       id: "bloom-web-app",
       image: "/images/newbloomwebapp.png",
@@ -14,41 +24,49 @@ const ProjectsSection = () => {
         "A comprehensive platform connecting Rwandan farmers with essential farming tools, expert knowledge, and streamlined agricultural resources for enhanced productivity.",
       link: "https://bloom-project.netlify.app/",
       tags: ["Frontend", "Backend", "Figma"],
-      height: "h-64",
+      height: "h-72",
     },
     {
-      id: "resto-omnifood",
-      image: "/images/restoomnifood.png",
-      title: "Resto OmniFood",
+      id: "mondevert-site",
+      image: "/images/MondVertSite.png",
+      title: "MondeVert",
       description:
-        "Modern restaurant website featuring online reservations, interactive menu browsing, and seamless food ordering with clean, responsive design.",
-      link: "https://benitha06.github.io/Resto-Omnifood/index.html",
+        "A creative environmental initiative built with Next.js. MondeVert uses art, culture, and technology to inspire communities to embrace sustainable living.",
+      link: "https://monde-vert-site.vercel.app/",
       tags: ["Frontend", "Figma"],
       height: "h-72",
     },
     {
-      id: "services",
-      image: "/images/newsavenest.png",
-      title: "SaveNest",
+      id: "mfasha-health-app",
+      image: "/images/mfasha.png",
+      title: "Mfasha",
       description:
-        "Intelligent savings application with budget creation, expense tracking, and smart alerts to help users maintain financial discipline and reach their goals.",
-      link: "https://savenest-app-eight.vercel.app/",
-      tags: ["Frontend", "Backend"],
-      height: "h-60",
+        "A mobile app that provides emergency preparedness tools and health literacy resources to Rwandans in Kinyarwanda.",
+      link: "https://drive.google.com/file/d/1ME_a-gjXlTLBXoraHYnC0U28nCxyMi5v/view?usp=drive_link",
+      tags: ["Frontend", "Backend", "Figma"],
+      height: "h-72",
     },
     {
-      id: "project-manager",
-      image: "/images/projectmanager.png",
-      title: "Project Manager",
+      id: "health-predict",
+      image: "/images/healthpredictapi.png",
+      title: "HealthPredict",
       description:
-        "Dynamic task management system built with JavaScript for efficient project tracking, featuring Docker deployment for consistent performance.",
-      link: "https://todomanagerp.netlify.app/",
-      tags: ["Frontend", "Backend"],
-      height: "h-68",
+        "An ML system that predicts disease prevalence rates based on health indicators, socioeconomic factors, and healthcare infrastructure",
+      link: "https://linear-regression-model-f74t.onrender.com/docs",
+      tags: ["Frontend", "Backend", "Linear Regression Model"],
+      height: "h-72",
     },
-  ];
+    {
+      id: "health-spot",
+      image: "/images/HealthSpotIMG.png",
+      title: "HealthSpot",
+      description:
+        "An ML model leveraging satellite imagery to identify underserved rural areas in Rwanda and suggest optimal locations for health facilities.",
+      link: "https://github.com/buwituze/HealthSpot_Model",
+      tags: ["NN Model", "Loistic Regression Model", "XBoost Model"],
+      height: "h-72",
+    },
 
-  const moreProjects = [
     {
       id: "draw-app",
       image: "/images/drawapp.png",
@@ -57,8 +75,11 @@ const ProjectsSection = () => {
         "Intuitive digital drawing application with user-friendly interface for creating and editing artwork with various tools and brushes.",
       link: "https://benitha06.github.io/draw/",
       tags: ["Frontend"],
-      height: "h-56",
+      height: "h-72",
     },
+  ];
+
+  const moreProjects = [
     {
       id: "agro-commerce",
       image: "/images/agrocommerce.png",
@@ -67,7 +88,7 @@ const ProjectsSection = () => {
         "E-commerce platform bridging the gap between farmers and agricultural suppliers, making farming resources more accessible.",
       link: "https://honolinekamurerwa.github.io/Agro-Center/index.html",
       tags: ["Frontend", "Figma"],
-      height: "h-64",
+      height: "h-74",
     },
   ];
 
@@ -127,7 +148,7 @@ const ProjectsSection = () => {
               style={{ animationDelay: `${index * 200}ms` }}
             >
               <div
-                className={`relative ${project.height} bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-700/50 overflow-hidden transition-all duration-700 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/25 hover:-translate-y-2`}
+                className={`relative ${project.height} bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-700/50 overflow-hidden transition-all duration-700 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/25`}
               >
                 {/* Project Image */}
                 <div className="relative w-full h-full overflow-hidden">

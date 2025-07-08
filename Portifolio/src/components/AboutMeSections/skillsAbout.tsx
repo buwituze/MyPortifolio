@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const SkillsSection = () => {
   const [hoveredSkill, setHoveredSkill] = useState<number | null>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [_, setMousePosition] = useState({ x: 0, y: 0 });
 
   const skills = [
     {
@@ -99,29 +99,21 @@ const SkillsSection = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // const categories = [...new Set(skills.map((skill) => skill.category))];
-
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 px-4 md:px-8 lg:px-12 overflow-hidden">
-      {/* Animated Background */}
-      {/* <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-blue-900/20 to-orange-500/10 animate-pulse"></div> */}
-
-      {/* Interactive cursor follower */}
+    <section className="relative min-h-screen bg-transparent py-20 px-4 md:px-8 lg:px-12 overflow-hidden">
+      {/* Dotted Pattern Overlay */}
       <div
-        className="fixed w-4 h-4 bg-orange-500/30 rounded-full pointer-events-none z-50 transition-all duration-200 mix-blend-difference"
+        className="absolute inset-0 opacity-20"
         style={{
-          left: mousePosition.x - 8,
-          top: mousePosition.y - 8,
+          backgroundImage:
+            "radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px)",
+          backgroundSize: "30px 30px",
         }}
       ></div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 text-orange-500 text-lg mb-4">
-            <span className="text-2xl">⚡</span>
-            <span>Technical Expertise</span>
-          </div>
           <h2 className="text-3xl md:text-4xl lg:text-4xl font-bold mb-6">
             <span className="text-3xl md:text-4xl font-bold bg-blue-500 bg-clip-text text-transparent mb-4">
               Skills & Technologies
@@ -144,7 +136,7 @@ const SkillsSection = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Card */}
-              <div className="relative h-40 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-700/50 transition-all duration-500 hover:border-orange-500/50 hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20 overflow-hidden group-hover:bg-gradient-to-br group-hover:from-slate-800/70 group-hover:to-slate-900/70">
+              <div className="relative h-40 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-700/50 transition-all duration-500 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/20 overflow-hidden group-hover:bg-gradient-to-br group-hover:from-slate-800/70 group-hover:to-slate-900/70">
                 {/* Gradient Overlay */}
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}

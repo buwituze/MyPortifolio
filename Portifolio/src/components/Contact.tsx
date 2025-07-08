@@ -13,7 +13,7 @@ const Contact = () => {
     success?: boolean;
     message?: string;
   } | null>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [_, setMousePosition] = useState({ x: 0, y: 0 });
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
   useEffect(() => {
@@ -103,25 +103,12 @@ const Contact = () => {
 
   return (
     <section
-      className="relative min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 px-4 md:px-8 lg:px-12 overflow-hidden"
+      className="relative min-h-screen bg-transparent pb-20 px-4 md:px-8 lg:px-12 overflow-hidden"
       id="contact"
     >
-      {/* Interactive cursor follower */}
-      <div
-        className="fixed w-4 h-4 bg-orange-500/30 rounded-full pointer-events-none z-50 transition-all duration-200 mix-blend-difference"
-        style={{
-          left: mousePosition.x - 8,
-          top: mousePosition.y - 8,
-        }}
-      ></div>
-
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          {/* <div className="inline-flex items-center gap-2 text-orange-500 text-lg mb-4">
-            <span className="text-2xl">✉️</span>
-            <span>Get In Touch</span>
-          </div> */}
           <h2 className="text-3xl md:text-4xl lg:text-4xl font-bold mb-6">
             <span className="text-3xl md:text-4xl font-bold bg-blue-500 bg-clip-text text-transparent mb-4">
               Contact Me
@@ -345,21 +332,6 @@ const Contact = () => {
                   {submitStatus.message}
                 </div>
               )}
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Section */}
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center gap-4 text-white/60 mb-6">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-              <span>Professional & Kind</span>
-            </div>
-            <div className="w-px h-4 bg-white/20"></div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-              <span>Quick Response</span>
             </div>
           </div>
         </div>

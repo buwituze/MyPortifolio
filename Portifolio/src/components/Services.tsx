@@ -6,7 +6,7 @@ const Services = () => {
 
   const services = [
     {
-      icon: "⚡", // Using emoji since we can't access your images
+      icon: "⚡",
       title: "Salesforce Admin",
       description:
         "Expert Salesforce administration and customization to streamline your business processes.",
@@ -65,22 +65,9 @@ const Services = () => {
 
   return (
     <section
-      className="relative min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 px-4 md:px-8 lg:px-12 overflow-hidden"
+      className="relative min-h-screen bg-transparent py-20 px-4 md:px-8 lg:px-12 overflow-hidden"
       id="services"
     >
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-purple-900/20 to-orange-500/10 animate-pulse"></div>
-
-      {/* Dotted Pattern Overlay */}
-      <div
-        className="absolute inset-0 opacity-20"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px)",
-          backgroundSize: "30px 30px",
-        }}
-      ></div>
-
       {/* Interactive cursor follower */}
       <div
         className="fixed w-4 h-4 bg-orange-500/30 rounded-full pointer-events-none z-50 transition-all duration-200 mix-blend-difference"
@@ -93,10 +80,6 @@ const Services = () => {
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          {/* <div className="inline-flex items-center gap-2 text-orange-500 text-lg mb-4">
-            <span className="text-2xl">🚀</span>
-            <span>Professional Services</span>
-          </div> */}
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             <span className="bg-blue-500 bg-clip-text text-transparent">
               What I Do
@@ -119,7 +102,7 @@ const Services = () => {
               style={{ animationDelay: `${index * 150}ms` }}
             >
               {/* Card */}
-              <div className="relative h-80 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-3xl border border-slate-700/50 transition-all duration-700 hover:border-orange-500/50 hover:-translate-y-4 hover:shadow-2xl hover:shadow-orange-500/25 overflow-hidden group-hover:bg-gradient-to-br group-hover:from-slate-800/70 group-hover:to-slate-900/70">
+              <div className="relative h-80 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-3xl border border-slate-700/50 transition-all duration-700 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/25 overflow-hidden group-hover:bg-gradient-to-br group-hover:from-slate-800/70 group-hover:to-slate-900/70">
                 {/* Gradient Overlay */}
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-15 transition-all duration-700`}
