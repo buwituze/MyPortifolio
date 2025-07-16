@@ -50,7 +50,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen  flex items-center px-4 md:px-8 lg:px-12 pt-20">
+    <section className="relative min-h-screen flex items-center px-4 md:px-8 lg:px-12 pt-20">
       {/* Animated Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-blue-900/30 to-orange-500/20 animate-pulse"></div>
 
@@ -231,15 +231,15 @@ const HeroSection = () => {
             </div>
 
             {/* Profile Image */}
-            <div className="relative z-10 flex justify-center items-center p-8">
-              <div className="relative">
+            <div className="relative z-10 flex justify-center items-center">
+              <div className="relative h-fill">
                 {/* Glow effect behind image */}
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-blue-500/20 rounded-full blur-xl animate-pulse"></div>
 
                 <img
                   src="/public/images/Benitha Portifolio.png"
                   alt="Benitha Uwituze"
-                  className="relative w-[100%] h-[400px] object-cover transition-transform duration-300 hover:-translate-y-3 rounded-lg shadow-2xl"
+                  className="relative w-[100%] h-[100%] object-cover rounded-lg shadow-2xl"
                 />
               </div>
             </div>

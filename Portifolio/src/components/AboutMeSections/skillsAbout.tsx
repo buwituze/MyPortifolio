@@ -9,85 +9,97 @@ const SkillsSection = () => {
       name: "Figma",
       category: "Design",
       percentage: 88,
-      icon: "🎨",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
       color: "from-purple-500 to-pink-500",
+      hasBackground: false,
     },
     {
       name: "CSS",
       category: "Frontend",
       percentage: 100,
-      icon: "💎",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg",
       color: "from-blue-500 to-cyan-500",
+      hasBackground: false,
     },
     {
       name: "TailwindCSS",
       category: "Frontend",
       percentage: 95,
-      icon: "🌪️",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
       color: "from-teal-500 to-blue-500",
+      hasBackground: false,
     },
     {
       name: "Bootstrap",
       category: "Frontend",
       percentage: 90,
-      icon: "⚡",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain.svg",
       color: "from-purple-600 to-blue-600",
+      hasBackground: false,
     },
     {
       name: "HTML",
       category: "Frontend",
       percentage: 100,
-      icon: "🏗️",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg",
       color: "from-orange-500 to-red-500",
+      hasBackground: false,
     },
     {
       name: "Vite",
       category: "Tools",
       percentage: 70,
-      icon: "⚡",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",
       color: "from-yellow-500 to-orange-500",
+      hasBackground: false,
     },
     {
       name: "React JS",
       category: "Frontend",
       percentage: 80,
-      icon: "⚛️",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
       color: "from-blue-400 to-blue-600",
+      hasBackground: false,
     },
     {
       name: "JavaScript",
       category: "Language",
       percentage: 90,
-      icon: "🚀",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg",
       color: "from-yellow-400 to-orange-500",
+      hasBackground: false,
     },
     {
       name: "Node JS",
       category: "Backend",
       percentage: 60,
-      icon: "🟢",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
       color: "from-green-500 to-green-600",
+      hasBackground: false,
     },
     {
       name: "MySQL",
       category: "Database",
       percentage: 85,
-      icon: "🗄️",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
       color: "from-blue-600 to-blue-800",
+      hasBackground: false,
     },
     {
       name: "Python",
       category: "Language",
       percentage: 75,
-      icon: "🐍",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
       color: "from-blue-500 to-yellow-500",
+      hasBackground: false,
     },
     {
       name: "Machine Learning",
       category: "AI/ML",
       percentage: 65,
-      icon: "🤖",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
       color: "from-purple-500 to-blue-500",
+      hasBackground: false,
     },
   ];
 
@@ -146,17 +158,38 @@ const SkillsSection = () => {
                 <div className="relative z-10 p-6 h-full flex flex-col justify-between">
                   {/* Top Section */}
                   <div className="flex items-center justify-between">
-                    <div className="text-3xl group-hover:scale-110 transition-transform duration-300">
-                      {skill.icon}
+                    <div className="w-8 h-8 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <img
+                        src={skill.icon}
+                        alt={`${skill.name} icon`}
+                        className={`w-full h-full object-contain transition-all duration-300 ${
+                          skill.hasBackground
+                            ? "opacity-70 group-hover:opacity-100"
+                            : "opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0"
+                        }`}
+                        onError={(e) => {
+                          // Fallback to text if image fails to load
+                          (e.currentTarget as HTMLElement).style.display =
+                            "none";
+                          const nextSibling = e.currentTarget
+                            .nextElementSibling as HTMLElement;
+                          if (nextSibling) {
+                            nextSibling.style.display = "block";
+                          }
+                        }}
+                      />
+                      <span className="text-2xl hidden text-white">
+                        {skill.name.charAt(0)}
+                      </span>
                     </div>
-                    <div className="text-xs px-2 py-1 bg-slate-700/50 rounded-full text-orange-400 border border-orange-500/30">
+                    <div className="text-xs px-2 py-1 bg-slate-700/50 rounded-full text-orange-400 border border-orange-500/30 shrink-0">
                       {skill.category}
                     </div>
                   </div>
 
                   {/* Skill Name */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-orange-300 transition-colors duration-300">
+                  <div className="min-h-0">
+                    <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-orange-300 transition-colors duration-300 leading-tight">
                       {skill.name}
                     </h3>
 
@@ -183,7 +216,7 @@ const SkillsSection = () => {
                 </div>
 
                 {/* Hover Effect Lines */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                   <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-orange-500 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
                   <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-transparent via-orange-500 to-transparent"></div>

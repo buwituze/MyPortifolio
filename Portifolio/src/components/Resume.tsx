@@ -137,12 +137,12 @@ const ProjectsSection = () => {
           </p>
         </div>
 
-        {/* Projects Masonry Grid */}
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6 mb-12">
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {allProjects.map((project, index) => (
             <div
               key={`${project.title}-${index}`}
-              className="break-inside-avoid group cursor-pointer"
+              className="group cursor-pointer"
               onMouseEnter={() => setHoveredProject(index)}
               onMouseLeave={() => setHoveredProject(null)}
               style={{ animationDelay: `${index * 200}ms` }}
@@ -216,12 +216,12 @@ const ProjectsSection = () => {
                     </div>
                   </div>
 
-                  {/* Hover Content - Description and Tags */}
+                  {/* Hover Content - Description and Tags with Smooth Slide Up */}
                   <div
-                    className={`transition-all duration-200 ease-out ${
+                    className={`transition-all duration-500 ease-out ${
                       hoveredProject === index
                         ? "opacity-100 translate-y-0 max-h-40"
-                        : "opacity-0 translate-y-2 max-h-0"
+                        : "opacity-0 translate-y-6 max-h-0"
                     } overflow-hidden`}
                   >
                     {/* Project Description */}
