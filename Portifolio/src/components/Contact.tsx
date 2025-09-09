@@ -135,7 +135,7 @@ const Contact = () => {
                 hours.
               </p>
               <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-600/30">
-                <p className="text-orange-400 font-medium mb-2">💡 Pro Tip:</p>
+                <p className="text-orange-400 font-medium mb-2">💡</p>
                 <p className="text-white/70 text-sm">
                   Our Coding Corner appreciates professionalism and kindness in
                   your messages!
@@ -165,41 +165,6 @@ const Contact = () => {
                   ></div>
                 </div>
               ))}
-            </div>
-
-            {/* Social Links */}
-            <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-700/50 p-8 hover:border-orange-500/50 transition-all duration-500">
-              <h4 className="text-lg font-semibold text-white mb-4">
-                Find me on social media
-              </h4>
-              <div className="flex gap-4">
-                {[
-                  {
-                    icon: "🔗",
-                    label: "LinkedIn",
-                    color: "from-blue-600 to-blue-700",
-                  },
-                  {
-                    icon: "🐱",
-                    label: "GitHub",
-                    color: "from-gray-600 to-gray-700",
-                  },
-                  {
-                    icon: "🐦",
-                    label: "Twitter",
-                    color: "from-sky-500 to-sky-600",
-                  },
-                ].map((social, index) => (
-                  <div
-                    key={index}
-                    className="group w-12 h-12 bg-gradient-to-br from-slate-700/50 to-slate-800/50 rounded-full flex items-center justify-center border border-slate-600/50 hover:border-orange-500/50 transition-all duration-300 cursor-pointer hover:scale-110"
-                  >
-                    <span className="text-lg group-hover:scale-110 transition-transform duration-300">
-                      {social.icon}
-                    </span>
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
 

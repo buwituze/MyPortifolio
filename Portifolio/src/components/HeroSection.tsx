@@ -237,7 +237,7 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-blue-500/20 rounded-full blur-xl animate-pulse"></div>
 
                 <img
-                  src="/public/images/Benitha Portifolio.png"
+                  src="/public/images/Benitha_outlined.png"
                   alt="Benitha Uwituze"
                   className="relative w-[100%] h-[100%] object-cover rounded-lg shadow-2xl"
                 />
