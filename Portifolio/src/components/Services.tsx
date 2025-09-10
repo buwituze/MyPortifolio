@@ -11,7 +11,6 @@ const Services = () => {
       description:
         "Expert Salesforce administration and customization to streamline your business processes.",
       color: "from-blue-500 to-cyan-500",
-      category: "CRM",
     },
     {
       icon: "🎨",
@@ -19,7 +18,6 @@ const Services = () => {
       description:
         "I design captivating visuals that communicate your brand's story effectively.",
       color: "from-purple-500 to-pink-500",
-      category: "Design",
     },
     {
       icon: "🌐",
@@ -27,7 +25,6 @@ const Services = () => {
       description:
         "I craft intuitive UX designs with Figma for a seamless user experience.",
       color: "from-teal-500 to-blue-500",
-      category: "Design",
     },
     {
       icon: "👨‍💻",
@@ -35,7 +32,6 @@ const Services = () => {
       description:
         "I build complete web applications from frontend interfaces to backend systems using React.js, Node.js, and MySQL databases.",
       color: "from-blue-400 to-green-600",
-      category: "Development",
     },
     {
       icon: "📱",
@@ -43,7 +39,6 @@ const Services = () => {
       description:
         "I create native and cross-platform mobile applications for iOS and Android with modern frameworks and intuitive user interfaces.",
       color: "from-indigo-500 to-purple-600",
-      category: "Development",
     },
     {
       icon: "✍️",
@@ -51,7 +46,6 @@ const Services = () => {
       description:
         "I create impactful written content that resonates with readers.",
       color: "from-yellow-500 to-orange-500",
-      category: "Content",
     },
   ];
 
@@ -102,7 +96,7 @@ const Services = () => {
               style={{ animationDelay: `${index * 150}ms` }}
             >
               {/* Card */}
-              <div className="relative h-80 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-3xl border border-slate-700/50 transition-all duration-700 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/25 overflow-hidden group-hover:bg-gradient-to-br group-hover:from-slate-800/70 group-hover:to-slate-900/70">
+              <div className="relative h-80 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-3xl border border-slate-700/50 transition-all duration-700 hover:border-none hover:none hover:shadow-orange-500/25 overflow-hidden group-hover:bg-gradient-to-br group-hover:from-slate-800/70 group-hover:to-slate-900/70">
                 {/* Gradient Overlay */}
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-15 transition-all duration-700`}
@@ -116,9 +110,6 @@ const Services = () => {
                 <div className="relative z-10 p-8 h-full flex flex-col">
                   {/* Category Badge */}
                   <div className="flex items-center justify-between mb-6">
-                    <div className="text-xs px-3 py-1 bg-slate-700/50 rounded-full text-orange-400 border border-orange-500/30 backdrop-blur-sm">
-                      {service.category}
-                    </div>
                     <div className="w-2 h-2 bg-orange-500/50 rounded-full group-hover:bg-orange-500 transition-colors duration-300"></div>
                   </div>
 
@@ -143,14 +134,6 @@ const Services = () => {
                   <p className="text-white/70 text-center leading-relaxed group-hover:text-white/90 transition-colors duration-300 flex-grow">
                     {service.description}
                   </p>
-                </div>
-
-                {/* Animated Border Lines */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-orange-500 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
-                  <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-transparent via-orange-500 to-transparent"></div>
-                  <div className="absolute top-0 right-0 w-px h-full bg-gradient-to-b from-transparent via-blue-500 to-transparent"></div>
                 </div>
 
                 {/* Shine Effect */}

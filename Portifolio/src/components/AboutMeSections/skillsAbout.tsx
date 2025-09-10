@@ -148,7 +148,7 @@ const SkillsSection = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Card */}
-              <div className="relative h-40 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-700/50 transition-all duration-500 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/20 overflow-hidden group-hover:bg-gradient-to-br group-hover:from-slate-800/70 group-hover:to-slate-900/70">
+              <div className="relative h-40 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-700/50 transition-all duration-500 hover:shadow-lg overflow-hidden group-hover:bg-gradient-to-br group-hover:from-slate-800/70 group-hover:to-slate-900/70">
                 {/* Gradient Overlay */}
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
@@ -182,14 +182,14 @@ const SkillsSection = () => {
                         {skill.name.charAt(0)}
                       </span>
                     </div>
-                    <div className="text-xs px-2 py-1 bg-slate-700/50 rounded-full text-orange-400 border border-orange-500/30 shrink-0">
+                    <div className="text-xs px-2 py-1 bg-slate-700/50 rounded-full text-white/70 border border-slate-600/30 shrink-0">
                       {skill.category}
                     </div>
                   </div>
 
                   {/* Skill Name */}
                   <div className="min-h-0">
-                    <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-orange-300 transition-colors duration-300 leading-tight">
+                    <h3 className="text-lg font-semibold text-white mb-2 transition-colors duration-300 leading-tight">
                       {skill.name}
                     </h3>
 
@@ -197,88 +197,25 @@ const SkillsSection = () => {
                     <div className="relative">
                       <div className="w-full h-2 bg-slate-700 rounded-full overflow-hidden">
                         <div
-                          className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1000 ease-out`}
+                          className={`h-full transition-all duration-1000 ease-out rounded-full ${
+                            hoveredSkill === index
+                              ? `bg-gradient-to-r ${skill.color}`
+                              : "bg-slate-600"
+                          }`}
                           style={{
-                            width:
-                              hoveredSkill === index
-                                ? `${skill.percentage}%`
-                                : "0%",
-                            transitionDelay:
-                              hoveredSkill === index ? "200ms" : "0ms",
+                            width: `${skill.percentage}%`,
                           }}
                         ></div>
                       </div>
-                      <span className="absolute -top-6 right-0 text-xs text-orange-400 font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="absolute -top-6 right-0 text-xs text-white/60 font-semibold">
                         {skill.percentage}%
                       </span>
                     </div>
                   </div>
                 </div>
-
-                {/* Hover Effect Lines */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                  <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-orange-500 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
-                  <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-transparent via-orange-500 to-transparent"></div>
-                  <div className="absolute top-0 right-0 w-px h-full bg-gradient-to-b from-transparent via-blue-500 to-transparent"></div>
-                </div>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Category Filter Tabs
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category, _) => (
-            <button
-              key={category}
-              className="px-6 py-3 bg-slate-800/50 text-white rounded-full border border-slate-600/50 hover:border-orange-500/50 hover:bg-orange-500/10 transition-all duration-300 backdrop-blur-md hover:shadow-lg hover:shadow-orange-500/20"
-            >
-              {category}
-            </button>
-          ))}
-        </div> */}
-
-        {/* Bottom Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
-          {[
-            { label: "Years Experience", value: "3+", icon: "📅" },
-            { label: "Projects Completed", value: "25+", icon: "🚀" },
-            { label: "Technologies", value: "12+", icon: "⚡" },
-            { label: "Happy Clients", value: "15+", icon: "😊" },
-          ].map((stat, index) => (
-            <div key={index} className="text-center group">
-              <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-300">
-                {stat.icon}
-              </div>
-              <div className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-blue-500 bg-clip-text text-transparent mb-1">
-                {stat.value}
-              </div>
-              <div className="text-white/70 text-sm">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <p className="text-white/70 mb-6">
-            Ready to build something amazing together?
-          </p>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-orange-500/20 to-blue-500/20 backdrop-blur-sm border border-orange-500/30 text-white rounded-full hover:border-orange-500/50 hover:bg-orange-500/10 transition-all duration-300"
-          >
-            Let's Connect
-            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M7 17L17 7M17 7H7M17 7V17"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </a>
         </div>
       </div>
 

@@ -234,12 +234,12 @@ const HeroSection = () => {
             <div className="relative z-10 flex justify-center items-center">
               <div className="relative h-fill">
                 {/* Glow effect behind image */}
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-blue-500/20 rounded-full blur-xl animate-pulse"></div>
+                {/* <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-blue-500/20 rounded-full blur-xl animate-pulse"></div> */}
 
                 <img
-                  src="/public/images/Benitha_outlined.png"
+                  src="/Benitha_Picture[1].png"
                   alt="Benitha Uwituze"
-                  className="relative w-[100%] h-[100%] object-cover rounded-lg shadow-2xl"
+                  className="relative w-[100%] h-[545px] object-cover px-8 rounded-lg shadow-2xl"
                 />
               </div>
             </div>

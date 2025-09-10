@@ -142,21 +142,6 @@ const Testimonials = () => {
             </div>
           ))}
         </div>
-
-        {/* Bottom Stats or Call to Action */}
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center gap-4 text-white/60 mb-8">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-              <span>Trusted by professionals</span>
-            </div>
-            <div className="w-px h-4 bg-white/20"></div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-              <span>Quality guaranteed</span>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Custom Styles */}
