@@ -2,7 +2,7 @@ const AboutMe = () => {
   return (
     <section
       id="aboutme"
-      className="relative bg-transparent py-20 px-4 md:px-8 lg:px-12 "
+      className="relative bg-transparent py-20 lg:mx-5 px-4 md:px-8 lg:px-12 "
     >
       {/* Subtle gradient overlay for smooth transition */}
       <div className="absolute inset-0"></div>

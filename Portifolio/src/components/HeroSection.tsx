@@ -84,9 +84,9 @@ const HeroSection = () => {
       ></div>
 
       {/* Hero Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+      <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         {/* Left side - Text content */}
-        <div className="space-y-6 text-center lg:text-left order-2 lg:order-1">
+        <div className="space-y-6 text-center lg:text-left order-2 lg:order-1 lg:ml-5">
           {/* Greeting */}
           <div className="flex items-center justify-center lg:justify-start gap-2 text-lg text-white/80">
             <span className="text-2xl animate-wave">👋</span>
@@ -182,7 +182,7 @@ const HeroSection = () => {
         </div>
 
         {/* Right side - Image and visual elements */}
-        <div className="flex justify-center items-center relative order-1 lg:order-2">
+        <div className="flex justify-center items-center relative lg:ml-24 order-1 lg:order-2">
           <div className="relative w-full max-w-md">
             {/* Animated Hexagonal Tech Ring Background */}
             <div className="absolute inset-0 flex items-center justify-center">

@@ -110,7 +110,7 @@ const ProjectsSection = () => {
 
   return (
     <section
-      className="relative min-h-screen bg-transparent py-20 px-4 md:px-8 lg:px-12 overflow-hidden"
+      className="relative min-h-screen bg-transparent lg:mx-5 py-20 px-4 md:px-8 lg:px-12 overflow-hidden"
       id="projects"
     >
       {/* Grid Pattern Overlay */}

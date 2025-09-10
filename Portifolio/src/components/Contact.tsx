@@ -82,22 +82,10 @@ const Contact = () => {
       color: "from-orange-500 to-red-500",
     },
     {
-      icon: "📱",
-      label: "Response Time",
-      value: "Within 24 hours",
-      color: "from-blue-500 to-cyan-500",
-    },
-    {
       icon: "🌍",
       label: "Location",
       value: "Kigali, Rwanda",
       color: "from-purple-500 to-pink-500",
-    },
-    {
-      icon: "💼",
-      label: "Status",
-      value: "Available for projects",
-      color: "from-green-500 to-emerald-500",
     },
   ];
 
@@ -125,7 +113,7 @@ const Contact = () => {
           {/* Left Side - Contact Info */}
           <div className="space-y-8">
             {/* Introduction */}
-            <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-700/50 p-8 hover:border-orange-500/50 transition-all duration-500 hover:shadow-xl hover:shadow-orange-500/10">
+            <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl border border-none p-8 ">
               <h3 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-blue-500 bg-clip-text text-transparent mb-6">
                 Let's Connect and Create!
               </h3>
