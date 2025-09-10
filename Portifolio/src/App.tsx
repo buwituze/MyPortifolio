@@ -5,7 +5,6 @@ import Home from "./Paes/Home";
 import ProjectsDetailed from "./Paes/Projects";
 import AOS from "aos";
 import { useEffect } from "react";
-import Tailwind from "./components/tailwind";
 
 function App() {
   useEffect(() => {
@@ -14,7 +13,6 @@ function App() {
 
   return (
     <Router>
-      {/* <Tailwind /> */}
       <Navbar />
       <Routes>
         <Route

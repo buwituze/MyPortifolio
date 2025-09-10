@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
 const Testimonials = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [_, setHoveredIndex] = useState<number | null>(null);
+  const [__, setMousePosition] = useState({ x: 0, y: 0 });
 
   const testimonials = [
     {
