@@ -50,7 +50,10 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center px-4 md:px-8 lg:px-12 pt-20">
+    <section
+      className="relative min-h-screen flex items-center px-4 md:px-8 lg:px-12 pt-20"
+      id="home"
+    >
       {/* Animated Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-blue-900/30 to-orange-500/20 animate-pulse"></div>
 
