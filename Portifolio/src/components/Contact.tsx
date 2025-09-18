@@ -134,7 +134,7 @@ const Contact = () => {
               {contactInfo.map((info, index) => (
                 <div
                   key={index}
-                  className="group bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-xl border border-slate-700/50 p-6 hover:border-orange-500/50 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-orange-500/10"
+                  className="group bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-xl border border-slate-700/50 p-6 hover:border-orange-500/50 transition-all duration-500 hover:-translate-y-1"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="flex items-center gap-4">
@@ -155,7 +155,7 @@ const Contact = () => {
           </div>
 
           {/* Right Side - Contact Form */}
-          <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-700/50 p-8 hover:border-orange-500/50 transition-all duration-500 hover:shadow-xl hover:shadow-orange-500/10">
+          <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-700/50 p-8 hover:border-orange-500/50 transition-all duration-500 ">
             <h3 className="text-2xl font-bold text-white mb-8 text-center">
               Connect with Me
             </h3>
