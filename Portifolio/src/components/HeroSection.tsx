@@ -142,7 +142,7 @@ const HeroSection = () => {
             </a>
 
             <a
-              href="/Benitha Uwituze Rutagengwa - Main CV.pdf"
+              href="/Benitha Uwituze Rutagengwa - CV.pdf"
               download="Benitha Uwituze Rutagengwa - CV.pdf"
               className="group relative inline-flex items-center gap-2 px-8 py-4 bg-blue-900/20 text-slate-200 font-semibold rounded-full border-2 border-blue-500/40 backdrop-blur-md transition-all duration-300 hover:bg-blue-500/30 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/30 overflow-hidden"
             >
