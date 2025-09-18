@@ -110,7 +110,7 @@ const ProjectsSection = () => {
 
   return (
     <section
-      className="relative min-h-screen bg-transparent lg:mx-5 py-20 px-4 md:px-8 lg:px-12 overflow-hidden"
+      className="relative min-h-screen bg-transparent lg:mx-5 py-12 px-4 md:px-8 lg:px-12 overflow-hidden"
       id="resume"
     >
       {/* Grid Pattern Overlay */}
@@ -256,10 +256,10 @@ const ProjectsSection = () => {
         </div>
 
         {/* Explore Portfolio Button */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-2">
           <button
             onClick={handleViewAllProjects}
-            className="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-slate-800/60 to-slate-900/60 backdrop-blur-md border border-slate-700/50 text-white rounded-2xl hover:border-orange-500/50 hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-blue-500/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-500/25 text-lg font-medium"
+            className="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-slate-800/60 to-slate-900/60 backdrop-blur-md border border-slate-700/50 text-white rounded-2xl hover:border-orange-500/50 hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-blue-500/20 transition-all duration-300 text-lg font-medium"
           >
             <Grid3x3
               size={22}

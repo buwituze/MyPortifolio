@@ -91,16 +91,14 @@ const Contact = () => {
 
   return (
     <section
-      className="relative min-h-screen bg-transparent pb-20 px-4 md:px-8 lg:px-12 overflow-hidden"
+      className="relative min-h-screen bg-transparent pt-12 pb-20 px-4 md:px-8 lg:px-12 overflow-hidden"
       id="contact"
     >
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-2xl md:text-2xl text-blue-500 lg:text-3xl font-bold mb-6">
-            <span className="bg-clip-text text-transparent mb-4">
-              Contact Me
-            </span>
+            Contact Me
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
             Ready to bring your ideas to life? Let's connect and create

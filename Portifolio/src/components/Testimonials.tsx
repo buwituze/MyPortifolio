@@ -31,25 +31,12 @@ const Testimonials = () => {
 
   return (
     <section
-      className="relative min-h-screen  py-20 px-4 md:px-8 lg:px-12 overflow-hidden"
+      className="relative min-h-screen  py-12 px-4 md:px-8 lg:px-12 overflow-hidden"
       id="testimonials"
     >
-      {/* Interactive cursor follower */}
-      {/* <div
-        className="fixed w-4 h-4 bg-orange-500/30 rounded-full pointer-events-none z-50 transition-all duration-200 mix-blend-difference"
-        style={{
-          left: mousePosition.x - 8,
-          top: mousePosition.y - 8,
-        }}
-      ></div> */}
-
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          {/* <div className="inline-flex items-center gap-2 text-orange-500 text-lg mb-4">
-            <span className="text-2xl">💬</span>
-            <span>Client Testimonials</span>
-          </div> */}
           <h2 className="text-2xl md:text-2xl text-blue-500 lg:text-3xl font-bold mb-6">
             Some Nice Words
           </h2>

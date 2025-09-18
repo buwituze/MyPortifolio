@@ -2,7 +2,7 @@ const AboutMe = () => {
   return (
     <section
       id="aboutme"
-      className="relative bg-transparent py-20 lg:mx-5 px-4 md:px-8 lg:px-12 "
+      className="relative bg-transparent py-12 lg:mx-5 px-4 md:px-8 lg:px-12 "
     >
       {/* Subtle gradient overlay for smooth transition */}
       <div className="absolute inset-0"></div>
@@ -10,7 +10,7 @@ const AboutMe = () => {
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="mx-auto mt-7 text-3xl md:text-3xl font-bold bg-blue-500 bg-clip-text text-transparent mb-4">
+          <h2 className="mx-auto mt-9 text-3xl md:text-3xl font-bold bg-blue-500 bg-clip-text text-transparent mb-4">
             So, Who Am I?
           </h2>
           {/* <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-blue-500 mx-auto rounded-full"></div> */}
@@ -19,7 +19,7 @@ const AboutMe = () => {
         {/* Main Content */}
         <div className="flex flex-col md:flex-row  gap-12 items-center">
           {/* Left Content */}
-          <div className="lg:w-[66%] space-y-6">
+          <div className="lg:w-[66%]">
             <div className="space-y-4 text-white/90 leading-relaxed">
               <p>
                 Software engineering student by day, problem-solving enthusiast

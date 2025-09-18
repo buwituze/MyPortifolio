@@ -112,7 +112,7 @@ const SkillsSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-transparent py-20 px-4 md:px-8 lg:px-12 lg:mx-5 overflow-hidden">
+    <section className="relative min-h-screen bg-transparent py-12 px-4 md:px-8 lg:px-12 lg:mx-5 overflow-hidden">
       {/* Dotted Pattern Overlay */}
       <div
         className="absolute inset-0 opacity-20"

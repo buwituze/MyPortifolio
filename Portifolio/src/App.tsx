@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/FooterA";
-import Home from "./Paes/Home";
-import ProjectsDetailed from "./Paes/Projects";
+import Home from "./Pages/Home";
 import AOS from "aos";
 import { useEffect } from "react";
+// import allProjects from "./Pages/Projects";
 
 function App() {
   useEffect(() => {
@@ -23,7 +23,7 @@ function App() {
             </>
           }
         />
-        <Route path="/projects" element={<ProjectsDetailed />} />
+        {/* <Route path="/all-projects" element={<allProjects />} /> */}
       </Routes>
       <Footer />
     </Router>
