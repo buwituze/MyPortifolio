@@ -50,10 +50,8 @@ const Testimonials = () => {
             <span className="text-2xl">💬</span>
             <span>Client Testimonials</span>
           </div> */}
-          <h2 className="text-3xl md:text-4xl lg:text-4xl font-bold mb-6">
-            <span className="text-3xl md:text-4xl font-bold bg-blue-500 bg-clip-text text-transparent mb-4">
-              Some Nice Words
-            </span>
+          <h2 className="text-2xl md:text-2xl text-blue-500 lg:text-3xl font-bold mb-6">
+            Some Nice Words
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
             What people say about working with me and the impact of our

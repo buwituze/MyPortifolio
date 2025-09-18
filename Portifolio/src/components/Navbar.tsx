@@ -11,7 +11,7 @@ const navbarConfig = {
     { type: "anchor", href: "#home", label: "Home" },
     { type: "anchor", href: "#about", label: "About" },
     { type: "anchor", href: "#services", label: "Services" },
-    { type: "anchor", href: "#resumesection", label: "Resume" },
+    { type: "anchor", href: "#resume", label: "Resume" },
     { type: "link", to: "/ProjectsDetailed", label: "Projects" },
     { type: "anchor", href: "#contact", label: "Contact" },
   ],

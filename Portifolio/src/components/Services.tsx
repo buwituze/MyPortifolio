@@ -74,7 +74,7 @@ const Services = () => {
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-2xl md:text-2xl text-blue-500 lg:text-3xl font-bold mb-6">
             <span className="bg-blue-500 bg-clip-text text-transparent">
               What I Do
             </span>

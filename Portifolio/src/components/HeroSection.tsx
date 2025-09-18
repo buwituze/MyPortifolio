@@ -142,8 +142,8 @@ const HeroSection = () => {
             </a>
 
             <a
-              href="/Benitha_Uwituze_Rutagengwa_CV.pdf"
-              download="Benitha_Uwituze_Rutagengwa_CV.pdf"
+              href="/Benitha Uwituze Rutagengwa - Main CV.pdf"
+              download="Benitha Uwituze Rutagengwa - CV.pdf"
               className="group relative inline-flex items-center gap-2 px-8 py-4 bg-blue-900/20 text-slate-200 font-semibold rounded-full border-2 border-blue-500/40 backdrop-blur-md transition-all duration-300 hover:bg-blue-500/30 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/30 overflow-hidden"
             >
               <svg
@@ -246,7 +246,7 @@ const HeroSection = () => {
           </div>
 
           {/* Code Snippet - Positioned at bottom center */}
-          <div className="absolute -bottom-8 -left-[5%] transform -translate-x-1/2 translate-y-1/2 bg-slate-900/95 p-4 rounded-lg border border-orange-500/40 backdrop-blur-md shadow-2xl shadow-slate-900/80 z-20">
+          <div className="absolute -bottom-1 -left-[17%] transform -translate-x-1/2 translate-y-1/2 bg-slate-900/95 p-4 rounded-lg border border-orange-500/40 backdrop-blur-md shadow-2xl shadow-slate-900/80 z-20">
             <pre className="text-orange-500 text-xs font-mono">
               {`const developer = {
   name: "Benitha",

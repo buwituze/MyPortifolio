@@ -10,7 +10,7 @@ const AboutMe = () => {
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="mx-auto mt-7 text-3xl md:text-4xl font-bold bg-blue-500 bg-clip-text text-transparent mb-4">
+          <h2 className="mx-auto mt-7 text-3xl md:text-3xl font-bold bg-blue-500 bg-clip-text text-transparent mb-4">
             So, Who Am I?
           </h2>
           {/* <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-blue-500 mx-auto rounded-full"></div> */}
@@ -22,40 +22,27 @@ const AboutMe = () => {
           <div className="lg:w-[66%] space-y-6">
             <div className="space-y-4 text-white/90 leading-relaxed">
               <p>
-                I'm a software engineering student at African Leadership
-                University, proudly supported by the Mastercard Foundation
-                scholarship. When I'm not buried in code or diving deep into
-                machine learning concepts, you'll find me exploring how
-                technology can solve real-world problems that actually matter to
-                communities.
+                Software engineering student by day, problem-solving enthusiast
+                by... well, also by day. <br />
               </p>
 
               <p>
-                I'm currently leveling up my skills as a Salesforce Admin (just
-                snagged my Salesforce Admin Credential!🎉), and honestly? I love
-                the challenge of turning complex problems into elegant
-                solutions. Whether it's building with React, experimenting with
-                Python, or designing user experiences that don't make people
-                want to throw their computers out the window, I'm all in.
-              </p>
-
-              <p>
-                What drives me? The belief that great tech should make life
-                better for everyone, not just the lucky few. I'm always curious,
-                always learning, and always ready to tackle the next interesting
-                challenge that comes my way.
+                I'm at African Leadership University on a Mastercard Foundation
+                scholarship, freshly certified as a Salesforce Admin, and
+                obsessed with creating technology that makes life better for
+                real people. <br /> React, Python, UX design - if it can solve
+                problems elegantly, I'm probably already tinkering with it.
               </p>
             </div>
 
             {/* Skills/Interests Pills */}
             <div className="flex flex-wrap gap-3 mt-8">
               {[
-                "Full-Stack Development",
+                "Full-Stack Dev",
                 "Machine Learning",
                 "Salesforce Admin",
-                "UI/UX Design",
-                "Problem Solving",
-                "Community Impact",
+                "Mobile Dev",
+                "UI/UX Designer",
               ].map((skill, index) => (
                 <span
                   key={index}
@@ -68,11 +55,8 @@ const AboutMe = () => {
           </div>
 
           {/* Right Image */}
-          <div className="flex lg:w-[35%] h-[500px] justify-center lg:justify-end">
+          <div className="flex lg:w-[35%] h-[400px] justify-center lg:justify-end">
             <div className="relative">
-              {/* Subtle glow effect */}
-              {/* <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 to-blue-500/20 rounded-2xl blur-xl transform scale-110"></div> */}
-
               {/* Image container */}
               <div className="relative w-full h-full  overflow-hidden rounded-2xl border border-slate-700/50 backdrop-blur-sm">
                 <img
