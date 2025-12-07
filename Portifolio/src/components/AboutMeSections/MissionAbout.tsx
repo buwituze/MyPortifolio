@@ -60,15 +60,6 @@ export default function MissionAbout() {
         ></div>
       </div>
 
-      {/* Interactive cursor follower */}
-      <div
-        className="fixed w-5 h-5 bg-orange-500/40 rounded-full pointer-events-none z-50 transition-all duration-100 mix-blend-difference shadow-lg shadow-orange-500/60"
-        style={{
-          left: mousePosition.x - 10,
-          top: mousePosition.y - 10,
-        }}
-      ></div>
-
       <div className="relative z-10 w-full max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">

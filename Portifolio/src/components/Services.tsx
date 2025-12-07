@@ -62,15 +62,6 @@ const Services = () => {
       className="relative min-h-screen bg-transparent py-12 px-4 md:px-8 lg:px-12 overflow-hidden lg:mx-5"
       id="services"
     >
-      {/* Interactive cursor follower */}
-      <div
-        className="fixed w-4 h-4 bg-orange-500/30 rounded-full pointer-events-none z-50 transition-all duration-200 mix-blend-difference"
-        style={{
-          left: mousePosition.x - 8,
-          top: mousePosition.y - 8,
-        }}
-      ></div>
-
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">

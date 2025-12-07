@@ -7,4 +7,15 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family: 'Intel', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  cursor: none; /* Hide default cursor */
+}
+
+/* Hide cursor on all interactive elements */
+* {
+  cursor: none !important;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
