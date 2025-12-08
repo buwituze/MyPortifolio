@@ -1,4 +1,4 @@
-import { FormEvent, useState, useEffect } from "react";
+import { FormEvent, useState, useEffect, useRef } from "react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -16,8 +16,35 @@ const Contact = () => {
   const [_, setMousePosition] = useState({ x: 0, y: 0 });
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
+  // Word Sphere State
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [words] = useState([
+    "React",
+    "TypeScript",
+    "JavaScript",
+    "CSS",
+    "HTML",
+    "Node.js",
+    "Design",
+    "Creative",
+    "Innovation",
+    "Portfolio",
+    "Frontend",
+    "Backend",
+    "API",
+    "Database",
+    "UI/UX",
+    "Dashboards",
+    "Responsive",
+    "Animation",
+    "Performance",
+    "Testing",
+    "Git",
+    "ML Models",
+  ]);
+
   useEffect(() => {
-    const handleMouseMove = (e: any) => {
+    const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener("mousemove", handleMouseMove);
@@ -93,13 +120,43 @@ const Contact = () => {
 
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Left Side - Empty for future content */}
-          <div className="space-y-8">
-            {/* You can add your custom content here */}
+          {/* Left Side - 3D Word Sphere */}
+          <div className="flex items-center justify-center">
+            <div
+              ref={containerRef}
+              className="word-sphere-container relative w-full max-w-md aspect-square"
+              style={{ perspective: "1000px" }}
+            >
+              <div className="word-sphere absolute inset-0">
+                {words.map((word, index) => {
+                  const phi = Math.acos(-1 + (2 * index) / words.length);
+                  const theta = Math.sqrt(words.length * Math.PI) * phi;
+
+                  const x = 150 * Math.cos(theta) * Math.sin(phi);
+                  const y = 150 * Math.sin(theta) * Math.sin(phi);
+                  const z = 150 * Math.cos(phi);
+
+                  return (
+                    <span
+                      key={index}
+                      className="word-sphere-item absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-blue-500 font-semibold whitespace-nowrap transition-all duration-300 hover:text-orange-500 hover:scale-125 cursor-default"
+                      style={{
+                        transform: `translate(-50%, -50%) translate3d(${x}px, ${y}px, ${z}px)`,
+                        fontSize: `${14 + (z / 150) * 8}px`,
+                        opacity: (z + 150) / 300,
+                        zIndex: Math.round(z),
+                      }}
+                    >
+                      {word}
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
           {/* Right Side - Contact Form */}
-          <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-700/50 p-8 ">
+          <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl p-8">
             <h3 className="text-2xl font-bold text-white mb-8 text-center">
               Connect with Me
             </h3>
@@ -192,7 +249,7 @@ const Contact = () => {
               {/* Submit Button */}
               <div
                 onClick={sendMail}
-                className="w-full py-2 bg-gradient-to-r from-orange-500 to-blue-500 text-white font-semibold rounded-xl transition-all duration-700 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg hover:shadow-xl cursor-pointer text-center"
+                className="w-full py-3 bg-gradient-to-r from-orange-500 to-blue-500 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl cursor-pointer text-center"
               >
                 {isSubmitting ? (
                   <div className="flex items-center justify-center gap-2">
@@ -256,12 +313,35 @@ const Contact = () => {
           }
         }
         
+        @keyframes rotateSphere {
+          from {
+            transform: rotateY(0deg);
+          }
+          to {
+            transform: rotateY(360deg);
+          }
+        }
+        
         .grid > div:first-child {
           animation: slideInFromLeft 0.8s ease-out forwards;
         }
         
         .grid > div:last-child {
           animation: slideInFromRight 0.8s ease-out forwards;
+        }
+        
+        .word-sphere {
+          transform-style: preserve-3d;
+          animation: rotateSphere 30s linear infinite;
+        }
+        
+        .word-sphere:hover {
+          animation-play-state: paused;
+        }
+        
+        .word-sphere-item {
+          user-select: none;
+          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         }
       `}</style>
     </section>
