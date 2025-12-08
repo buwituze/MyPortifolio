@@ -50,7 +50,7 @@ const Services = () => {
 
   return (
     <section
-      className="relative min-h-screen bg-transparent py-12 px-4 md:px-8 lg:px-12 overflow-hidden lg:mx-5"
+      className="relative min-h-screen bg-transparent py-6 px-4 md:px-8 lg:px-12 overflow-hidden lg:mx-5"
       id="services"
     >
       {/* Grid Pattern Overlay */}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, ExternalLink, Grid3x3, Eye } from "lucide-react";
+import { ExternalLink, Eye } from "lucide-react";
 
 const ProjectsSection = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
@@ -96,11 +96,6 @@ const ProjectsSection = () => {
     ? [...featuredProjects, ...moreProjects]
     : featuredProjects;
 
-  const handleViewAllProjects = () => {
-    // Navigate to projects page - you can replace this with your routing logic
-    window.location.href = "/projects";
-  };
-
   const scrollToSection = (sectionId: any) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -110,7 +105,7 @@ const ProjectsSection = () => {
 
   return (
     <section
-      className="relative min-h-screen bg-transparent lg:mx-5 py-12 px-4 md:px-8 lg:px-12 overflow-hidden"
+      className="relative min-h-screen bg-transparent pt-10 lg:mx-5 px-4 md:px-8 lg:px-12 overflow-hidden"
       id="resume"
     >
       {/* Grid Pattern Overlay */}
@@ -253,24 +248,6 @@ const ProjectsSection = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Explore Portfolio Button */}
-        <div className="text-center mb-2">
-          <button
-            onClick={handleViewAllProjects}
-            className="group inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-slate-800/60 to-slate-900/60 backdrop-blur-md border border-slate-700/50 text-white rounded-2xl hover:border-orange-500/50 hover:bg-gradient-to-r hover:from-orange-500/20 hover:to-blue-500/20 transition-all duration-300 text-lg font-medium"
-          >
-            <Grid3x3
-              size={22}
-              className="transition-transform duration-300 group-hover:rotate-12"
-            />
-            <span>Explore Full Portfolio</span>
-            <ArrowRight
-              size={22}
-              className="transition-transform duration-300 group-hover:translate-x-2"
-            />
-          </button>
         </div>
       </div>
 
