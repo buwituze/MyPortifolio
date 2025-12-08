@@ -34,6 +34,15 @@ const Testimonials = () => {
       className="relative min-h-screen  py-12 px-4 md:px-8 lg:px-12 overflow-hidden"
       id="testimonials"
     >
+      {/* Grid Pattern Overlay */}
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+          backgroundSize: "50px 50px",
+        }}
+      ></div>
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">

@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Services = () => {
   const [_, setHoveredService] = useState<number | null>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const services = [
     {
@@ -49,19 +48,21 @@ const Services = () => {
     },
   ];
 
-  useEffect(() => {
-    const handleMouseMove = (e: any) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
   return (
     <section
       className="relative min-h-screen bg-transparent py-12 px-4 md:px-8 lg:px-12 overflow-hidden lg:mx-5"
       id="services"
     >
+      {/* Grid Pattern Overlay */}
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+          backgroundSize: "50px 50px",
+        }}
+      ></div>
+
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
@@ -87,49 +88,40 @@ const Services = () => {
               style={{ animationDelay: `${index * 150}ms` }}
             >
               {/* Card */}
-              <div className="relative h-80 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-3xl border border-slate-700/50 transition-all duration-700 hover:border-none hover:none hover:shadow-orange-500/25 overflow-hidden group-hover:bg-gradient-to-br group-hover:from-slate-800/70 group-hover:to-slate-900/70">
+              <div className="relative h-64 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-3xl border border-slate-700/50 transition-all duration-500 hover:shadow-lg overflow-hidden group-hover:bg-gradient-to-br group-hover:from-slate-800/60 group-hover:to-slate-900/60">
                 {/* Gradient Overlay */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-15 transition-all duration-700`}
+                  className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-all duration-500`}
                 ></div>
 
-                {/* Floating Elements */}
-                <div className="absolute -top-2 -right-2 w-20 h-20 bg-gradient-to-br from-orange-500/20 to-blue-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-                <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200"></div>
-
                 {/* Content */}
-                <div className="relative z-10 p-8 h-full flex flex-col">
+                <div className="relative z-10 p-6 h-full flex flex-col">
                   {/* Category Badge */}
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="w-2 h-2 bg-orange-500/50 rounded-full group-hover:bg-orange-500 transition-colors duration-300"></div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-2 h-2 bg-slate-500/50 rounded-full group-hover:bg-slate-400 transition-colors duration-300"></div>
                   </div>
 
                   {/* Icon */}
-                  <div className="flex justify-center mb-6">
-                    <div className="relative w-20 h-20 bg-gradient-to-br from-slate-700/50 to-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-600/50 flex items-center justify-center group-hover:border-orange-500/30 transition-all duration-500 group-hover:scale-110 group-hover:rotate-12">
+                  <div className="flex justify-center mb-4">
+                    <div className="relative w-16 h-16 bg-gradient-to-br from-slate-700/50 to-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-600/50 flex items-center justify-center group-hover:border-slate-500/50 transition-all duration-500 group-hover:scale-105">
                       <div
-                        className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-2xl`}
+                        className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}
                       ></div>
-                      <div className="text-3xl relative z-10 group-hover:scale-110 transition-transform duration-300">
+                      <div className="text-2xl relative z-10 group-hover:scale-105 transition-transform duration-300">
                         {service.icon}
                       </div>
                     </div>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-white mb-4 text-center group-hover:text-orange-300 transition-colors duration-300">
+                  <h3 className="text-lg font-bold text-white mb-3 text-center group-hover:text-white transition-colors duration-300">
                     {service.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-white/70 text-center leading-relaxed group-hover:text-white/90 transition-colors duration-300 flex-grow">
+                  <p className="text-sm text-white/70 text-center leading-relaxed group-hover:text-white/85 transition-colors duration-300 flex-grow">
                     {service.description}
                   </p>
-                </div>
-
-                {/* Shine Effect */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                  <div className="absolute -top-40 -left-40 w-80 h-80 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-3xl transform rotate-45 group-hover:animate-pulse"></div>
                 </div>
               </div>
             </div>

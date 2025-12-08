@@ -74,21 +74,6 @@ const Contact = () => {
     }
   };
 
-  const contactInfo = [
-    {
-      icon: "📧",
-      label: "Email",
-      value: "benithatuze@gmail.com",
-      color: "from-orange-500 to-red-500",
-    },
-    {
-      icon: "🌍",
-      label: "Location",
-      value: "Kigali, Rwanda",
-      color: "from-purple-500 to-pink-500",
-    },
-  ];
-
   return (
     <section
       className="relative min-h-screen bg-transparent pt-12 pb-20 px-4 md:px-8 lg:px-12 overflow-hidden"
@@ -108,50 +93,9 @@ const Contact = () => {
 
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Left Side - Contact Info */}
+          {/* Left Side - Empty for future content */}
           <div className="space-y-8">
-            {/* Introduction */}
-            <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl border border-none p-8 ">
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-blue-500 bg-clip-text text-transparent mb-6">
-                Let's Connect and Create!
-              </h3>
-              <p className="text-white/80 text-lg leading-relaxed mb-6">
-                If you have a project you'd like to discuss or any other
-                message, please leave a note, and I'll get back to you within 24
-                hours.
-              </p>
-              <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-600/30">
-                <p className="text-orange-400 font-medium mb-2">💡</p>
-                <p className="text-white/70 text-sm">
-                  Our Coding Corner appreciates professionalism and kindness in
-                  your messages!
-                </p>
-              </div>
-            </div>
-
-            {/* Contact Info Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {contactInfo.map((info, index) => (
-                <div
-                  key={index}
-                  className="group bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-xl border border-slate-700/50 p-6 hover:border-orange-500/50 transition-all duration-500 hover:-translate-y-1"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="text-2xl group-hover:scale-110 transition-transform duration-300">
-                      {info.icon}
-                    </div>
-                    <div>
-                      <p className="text-white/60 text-sm mb-1">{info.label}</p>
-                      <p className="text-white font-medium">{info.value}</p>
-                    </div>
-                  </div>
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-r ${info.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-xl`}
-                  ></div>
-                </div>
-              ))}
-            </div>
+            {/* You can add your custom content here */}
           </div>
 
           {/* Right Side - Contact Form */}

@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const SkillsSection = () => {
   const [hoveredSkill, setHoveredSkill] = useState<number | null>(null);
-  const [_, setMousePosition] = useState({ x: 0, y: 0 });
 
   const skills = [
     {
@@ -103,23 +102,15 @@ const SkillsSection = () => {
     },
   ];
 
-  useEffect(() => {
-    const handleMouseMove = (e: any) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
   return (
     <section className="relative min-h-screen bg-transparent py-12 px-4 md:px-8 lg:px-12 lg:mx-5 overflow-hidden">
-      {/* Dotted Pattern Overlay */}
+      {/* Grid Pattern Overlay */}
       <div
-        className="absolute inset-0 opacity-20"
+        className="absolute inset-0 opacity-10"
         style={{
           backgroundImage:
-            "radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px)",
-          backgroundSize: "30px 30px",
+            "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+          backgroundSize: "50px 50px",
         }}
       ></div>
 
@@ -127,7 +118,7 @@ const SkillsSection = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-2xl md:text-2xl text-blue-500 lg:text-3xl font-bold mb-6">
-            <span className="text-2xl md:text-2xl lg:text-3xl bg-blue-500 font-bol bg-clip-text text-transparent mb-4">
+            <span className="text-2xl md:text-2xl lg:text-3xl bg-blue-500 font-bold bg-clip-text text-transparent mb-4">
               Skills & Technologies
             </span>
           </h2>
@@ -148,17 +139,17 @@ const SkillsSection = () => {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Card */}
-              <div className="relative h-40 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-700/50 transition-all duration-500 hover:shadow-lg overflow-hidden group-hover:bg-gradient-to-br group-hover:from-slate-800/70 group-hover:to-slate-900/70">
+              <div className="relative h-32 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-700/50 transition-all duration-500 hover:shadow-lg overflow-hidden group-hover:bg-gradient-to-br group-hover:from-slate-800/60 group-hover:to-slate-900/60">
                 {/* Gradient Overlay */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
+                  className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
                 ></div>
 
                 {/* Content */}
-                <div className="relative z-10 p-6 h-full flex flex-col justify-between">
+                <div className="relative z-10 p-4 h-full flex flex-col justify-between">
                   {/* Top Section */}
                   <div className="flex items-center justify-between">
-                    <div className="w-8 h-8 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-7 h-7 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
                       <img
                         src={skill.icon}
                         alt={`${skill.name} icon`}
@@ -168,11 +159,10 @@ const SkillsSection = () => {
                             : "opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0"
                         }`}
                         onError={(e) => {
-                          // Fallback to text if image fails to load
-                          (e.currentTarget as HTMLElement).style.display =
-                            "none";
-                          const nextSibling = e.currentTarget
-                            .nextElementSibling as HTMLElement;
+                          const target = e.currentTarget as HTMLElement;
+                          target.style.display = "none";
+                          const nextSibling =
+                            target.nextElementSibling as HTMLElement;
                           if (nextSibling) {
                             nextSibling.style.display = "block";
                           }
@@ -189,17 +179,17 @@ const SkillsSection = () => {
 
                   {/* Skill Name */}
                   <div className="min-h-0">
-                    <h3 className="text-lg font-semibold text-white mb-2 transition-colors duration-300 leading-tight">
+                    <h3 className="text-base font-semibold text-white mb-1.5 transition-colors duration-300 leading-tight">
                       {skill.name}
                     </h3>
 
                     {/* Progress Bar */}
                     <div className="relative">
-                      <div className="w-full h-2 bg-slate-700 rounded-full overflow-hidden">
+                      <div className="w-full h-1.5 bg-slate-700 rounded-full overflow-hidden">
                         <div
                           className={`h-full transition-all duration-1000 ease-out rounded-full ${
                             hoveredSkill === index
-                              ? `bg-gradient-to-r ${skill.color}`
+                              ? "bg-slate-500"
                               : "bg-slate-600"
                           }`}
                           style={{
@@ -207,7 +197,7 @@ const SkillsSection = () => {
                           }}
                         ></div>
                       </div>
-                      <span className="absolute -top-6 right-0 text-xs text-white/60 font-semibold">
+                      <span className="absolute -top-5 right-0 text-xs text-white/60 font-semibold">
                         {skill.percentage}%
                       </span>
                     </div>
