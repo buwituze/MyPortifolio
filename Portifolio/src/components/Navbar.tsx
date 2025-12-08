@@ -192,7 +192,7 @@ const Navbar = () => {
               ? "bg-white/95 border-black/10 shadow-xl shadow-black/15"
               : "bg-slate-900/95 border-orange-400/20 shadow-2xl shadow-black/30"
           }
-          backdrop-blur-xl border rounded-lg px-6 py-4
+          backdrop-blur-xl border rounded-lg px-6 py-2
           flex items-center justify-between w-full
           transition-all duration-300 ease-out
         `}

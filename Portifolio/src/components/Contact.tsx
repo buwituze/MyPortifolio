@@ -99,7 +99,7 @@ const Contact = () => {
           </div>
 
           {/* Right Side - Contact Form */}
-          <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-700/50 p-8 hover:border-orange-500/50 transition-all duration-500 ">
+          <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-700/50 p-8 ">
             <h3 className="text-2xl font-bold text-white mb-8 text-center">
               Connect with Me
             </h3>
@@ -192,7 +192,7 @@ const Contact = () => {
               {/* Submit Button */}
               <div
                 onClick={sendMail}
-                className="w-full py-4 bg-gradient-to-r from-orange-500 to-blue-500 text-white font-semibold rounded-xl hover:from-orange-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg hover:shadow-xl cursor-pointer text-center"
+                className="w-full py-2 bg-gradient-to-r from-orange-500 to-blue-500 text-white font-semibold rounded-xl transition-all duration-700 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg hover:shadow-xl cursor-pointer text-center"
               >
                 {isSubmitting ? (
                   <div className="flex items-center justify-center gap-2">

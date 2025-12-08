@@ -1,10 +1,33 @@
+import { Icon } from "@iconify/react";
+
 const AboutMe = () => {
   const skills = [
-    { name: "Full-Stack Dev", icon: "💻" },
-    { name: "Machine Learning", icon: "🤖" },
-    { name: "Salesforce Admin", icon: "☁️" },
-    { name: "Mobile Dev", icon: "📱" },
-    { name: "UI/UX Designer", icon: "🎨" },
+    {
+      name: "Full-Stack Dev",
+      icon: (
+        <Icon
+          icon="material-symbols-light:developer-mode-tv-outline-rounded"
+          width="30"
+          height="30"
+        />
+      ),
+    },
+    {
+      name: "Machine Learning",
+      icon: <Icon icon="pajamas:machine-learning" width="30" height="30" />,
+    },
+    {
+      name: "Salesforce Admin",
+      icon: <Icon icon="devicon-plain:salesforce" width="34" height="34" />,
+    },
+    {
+      name: "Mobile Dev",
+      icon: <Icon icon="iconoir:mobile-dev-mode" width="30" height="30" />,
+    },
+    {
+      name: "UI/UX Designer",
+      icon: <Icon icon="mingcute:pen-line" width="30" height="30" />,
+    },
   ];
 
   const experiences = [
@@ -13,6 +36,12 @@ const AboutMe = () => {
       company: "SokoFund",
       period: "Sep 2024 – Nov 2025",
       type: "Full-time",
+    },
+    {
+      role: "Game Dev",
+      company: "Flowers & Gardening Studio",
+      period: "July 2024 – Sep 2025",
+      type: "Contract",
     },
     {
       role: "Front-End Developer",
@@ -65,20 +94,48 @@ const AboutMe = () => {
                   tinkering with it.
                 </p>
               </div>
+
+              <div className="flex justify-between items-center mt-10">
+                <div className="flex items-center gap-1">
+                  <div className="bg-slate-950 rounded-full p-2">
+                    <Icon
+                      icon="formkit:email"
+                      width="16"
+                      height="16"
+                      color="white"
+                    />{" "}
+                  </div>
+                  <p className="text-white/80 text-sm">
+                    benithatuze15@mail.com
+                  </p>
+                </div>
+                <div className="flex items-center gap-1">
+                  <div className="bg-slate-950 rounded-full p-2">
+                    <Icon
+                      icon="ic:round-phone"
+                      width="16"
+                      height="16"
+                      color="white"
+                    />
+                  </div>
+                  <p className="text-white/80 text-sm">+250 790 100 718</p>
+                </div>
+              </div>
             </div>
             <div>
               {/* Skills Icons Section */}
               <div className="px-6">
-                <h3 className="text-2xl font-semibold text-white/90 mb-9">
+                <h3 className="text-2xl font-semibold text-white/90 mb-6">
                   Skills & Interests
                 </h3>
                 <div className="flex flex-wrap gap-4">
                   {skills.map((skill, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-2 px-3 py-2 bg-slate-900 rounded-lg"
+                      className="relative flex items-center gap-2 px-3 py-2 bg-slate-950 rounded-lg group cursor-pointer"
+                      title={skill.name}
                     >
-                      <span className="text-2xl group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-2xl text-white group-hover:scale-110 transition-transform duration-300">
                         {skill.icon}
                       </span>
                     </div>
@@ -87,17 +144,17 @@ const AboutMe = () => {
               </div>
 
               {/* Experience Section */}
-              <div className=" rounded-2xl p-6 mt-5">
+              <div className=" rounded-2xl p-6 mt-2">
                 <h3 className="text-2xl font-semibold text-white/90 mb-4">
                   Experience
                 </h3>
                 <div className="space-y-4">
                   {experiences.map((exp, index) => (
                     <div key={index}>
-                      <p className="text-xs font-semibold text-white/90 mt-7">
+                      <p className="text-xs font-semibold text-white/90 mt-6">
                         {exp.period} • {exp.type}
                       </p>
-                      <h4 className=" text-sm text-white/70 mt-4">
+                      <h4 className=" text-sm text-white/70 mt-2.5">
                         {exp.role} • {exp.company}
                       </h4>
                     </div>

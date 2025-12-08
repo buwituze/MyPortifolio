@@ -37,6 +37,16 @@ const ProjectsSection = () => {
       height: "h-72",
     },
     {
+      id: "civicevents+",
+      image: "/images/MondVertSite.png",
+      title: "CivicEvents+",
+      description:
+        "A user–admin platform for event registration, announcements, and promotions, with full content creation for admins, user management tools, and complete profile management.",
+      link: "#",
+      tags: ["Frontend", ""],
+      height: "h-72",
+    },
+    {
       id: "mfasha-health-app",
       image: "/images/mfasha.png",
       title: "Mfasha",
@@ -143,7 +153,7 @@ const ProjectsSection = () => {
               style={{ animationDelay: `${index * 200}ms` }}
             >
               <div
-                className={`relative ${project.height} bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-700/50 overflow-hidden transition-all duration-700 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/25`}
+                className={`relative ${project.height} bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-700/50 overflow-hidden transition-all duration-700 hover:shadow-xl hover:shadow-slate-700/70`}
               >
                 {/* Project Image */}
                 <div className="relative w-full h-full overflow-hidden">
@@ -236,14 +246,6 @@ const ProjectsSection = () => {
                       ))}
                     </div>
                   </div>
-                </div>
-
-                {/* Animated Border Lines */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-orange-500 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
-                  <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-transparent via-orange-500 to-transparent"></div>
-                  <div className="absolute top-0 right-0 w-px h-full bg-gradient-to-b from-transparent via-blue-500 to-transparent"></div>
                 </div>
               </div>
             </div>

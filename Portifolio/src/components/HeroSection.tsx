@@ -52,7 +52,7 @@ const HeroSection = () => {
       <div className="relative z-10 w-full max-w-4xl mx-auto text-center space-y-3">
         {/* Tech Stack - Animated with letter spacing */}
         <div className="min-h-[0px] flex items-center justify-center">
-          <p className="text-sm md:text-base text-white/60 tracking-[1.3em] uppercase font-light">
+          <p className="text-sm md:text-base text-white/60 tracking-[1em] md:tracking-[1.3em] uppercase font-light">
             {displayText}
             <span className="animate-pulse">|</span>
           </p>
@@ -65,23 +65,23 @@ const HeroSection = () => {
           </h1>
 
           {/* Years of Experience Chip - Right side, slightly down */}
-          <div className="absolute top-5 -right-16 md:-right-20 lg:-right-32 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-full text-xs md:text-sm font-semibold whitespace-nowrap shadow-lg">
-            + 3 Years of Experience
+          <div className="hidden md:block absolute top-5 -right-16 md:-right-20 lg:-right-32 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-full text-xs md:text-sm font-semibold whitespace-nowrap shadow-lg">
+            3 Years of Experience
           </div>
         </div>
 
         {/* Name and Year - Aligned horizontally */}
         <div className="flex justify-between items-center w-full px-4 md:px-12 lg:px-16 pt-0">
-          <h2 className="text-xl md:text-xl lg:text-xl ml-14 font-bold bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">
+          <h2 className="text-xl md:text-xl lg:text-xl md:ml-14 font-bold bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">
             Benitha Uwituze
           </h2>
-          <p className="text-xl md:text-xl lg:text-xl mr-14 bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">
+          <p className="text-xl md:text-xl lg:text-xl md:mr-14 bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">
             {currentYear}
           </p>
         </div>
 
         {/* CTA Buttons - Blue styled */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center pt-20 md:pt-8">
           <a
             href="#contact"
             className="group relative inline-flex items-center justify-center gap-2 px-8 py-2.5 bg-blue-900/20 text-slate-200 font-semibold rounded-full border-2 border-blue-500/40 backdrop-blur-md transition-all duration-300 hover:bg-blue-500/30 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/30"
