@@ -109,7 +109,7 @@ const Contact = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-2xl md:text-2xl text-blue-500 lg:text-3xl font-bold mb-6">
-            Contact Me
+            Contact Moi
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
             Ready to bring your ideas to life? Let's connect and create
