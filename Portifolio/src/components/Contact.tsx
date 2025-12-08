@@ -14,7 +14,6 @@ const Contact = () => {
     message?: string;
   } | null>(null);
   const [_, setMousePosition] = useState({ x: 0, y: 0 });
-  const [focusedField, setFocusedField] = useState<string | null>(null);
 
   // Word Sphere State
   const containerRef = useRef<HTMLDivElement>(null);
@@ -124,7 +123,7 @@ const Contact = () => {
           <div className="flex items-center justify-center">
             <div
               ref={containerRef}
-              className="word-sphere-container relative w-full max-w-md aspect-square"
+              className="word-sphere-container relative w-full max-w-lg aspect-square"
               style={{ perspective: "1000px" }}
             >
               <div className="word-sphere absolute inset-0">
@@ -139,7 +138,7 @@ const Contact = () => {
                   return (
                     <span
                       key={index}
-                      className="word-sphere-item absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-blue-500 font-semibold whitespace-nowrap transition-all duration-300 hover:text-orange-500 hover:scale-125 cursor-default"
+                      className="word-sphere-item absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-500 font-semibold whitespace-nowrap transition-all duration-300 hover:text-orange-500 hover:scale-125 cursor-default"
                       style={{
                         transform: `translate(-50%, -50%) translate3d(${x}px, ${y}px, ${z}px)`,
                         fontSize: `${14 + (z / 150) * 8}px`,
@@ -161,95 +160,91 @@ const Contact = () => {
               Connect with Me
             </h3>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               {/* Name Field */}
-              <div className="relative">
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-white/80 mb-1"
+                >
+                  Name
+                </label>
                 <input
                   type="text"
                   name="name"
                   id="name"
-                  placeholder="Enter your Name"
+                  placeholder="e.g.: Debolla Joe"
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  onFocus={() => setFocusedField("name")}
-                  onBlur={() => setFocusedField(null)}
-                  className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600/50 rounded-xl text-white placeholder-white/50 focus:border-orange-500/50 focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition-all duration-300"
+                  className="w-full px-4 py-2 bg-slate-800/50 border border-slate-600/50 rounded-xl text-white text-sm placeholder-white/50 focus:outline-none"
                 />
-                <div
-                  className={`absolute inset-0 bg-gradient-to-r from-orange-500/10 to-blue-500/10 rounded-xl pointer-events-none transition-opacity duration-300 ${
-                    focusedField === "name" ? "opacity-100" : "opacity-0"
-                  }`}
-                ></div>
               </div>
 
               {/* Email Field */}
-              <div className="relative">
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-white/80 mb-1"
+                >
+                  Email
+                </label>
                 <input
                   type="email"
                   name="email"
                   id="email"
-                  placeholder="Enter your Email"
+                  placeholder="e.g.: debolla.joe@example.com"
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  onFocus={() => setFocusedField("email")}
-                  onBlur={() => setFocusedField(null)}
-                  className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600/50 rounded-xl text-white placeholder-white/50 focus:border-orange-500/50 focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition-all duration-300"
+                  className="w-full px-4 py-2 bg-slate-800/50 border border-slate-600/50 rounded-xl text-white text-sm placeholder-white/50 focus:outline-none"
                 />
-                <div
-                  className={`absolute inset-0 bg-gradient-to-r from-orange-500/10 to-blue-500/10 rounded-xl pointer-events-none transition-opacity duration-300 ${
-                    focusedField === "email" ? "opacity-100" : "opacity-0"
-                  }`}
-                ></div>
               </div>
 
               {/* Subject Field */}
-              <div className="relative">
+              <div>
+                <label
+                  htmlFor="subject"
+                  className="block text-sm font-medium text-white/80 mb-1"
+                >
+                  Subject
+                </label>
                 <input
                   type="text"
                   name="subject"
                   id="subject"
-                  placeholder="Enter Subject"
+                  placeholder="e.g.: Project Collaboration Inquiry"
                   required
                   value={formData.subject}
                   onChange={handleChange}
-                  onFocus={() => setFocusedField("subject")}
-                  onBlur={() => setFocusedField(null)}
-                  className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600/50 rounded-xl text-white placeholder-white/50 focus:border-orange-500/50 focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition-all duration-300"
+                  className="w-full px-4 py-2 bg-slate-800/50 border border-slate-600/50 rounded-xl text-white text-sm placeholder-white/50 focus:outline-none"
                 />
-                <div
-                  className={`absolute inset-0 bg-gradient-to-r from-orange-500/10 to-blue-500/10 rounded-xl pointer-events-none transition-opacity duration-300 ${
-                    focusedField === "subject" ? "opacity-100" : "opacity-0"
-                  }`}
-                ></div>
               </div>
 
               {/* Message Field */}
-              <div className="relative">
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-white/80 mb-1"
+                >
+                  Message
+                </label>
                 <textarea
                   name="message"
                   id="message"
-                  placeholder="Place your Message here."
+                  placeholder="e.g.: I'd like to discuss a potential project collaboration..."
                   required
                   value={formData.message}
                   onChange={handleChange}
-                  onFocus={() => setFocusedField("message")}
-                  onBlur={() => setFocusedField(null)}
-                  rows={6}
-                  className="w-full px-4 py-3 bg-slate-800/50 border border-slate-600/50 rounded-xl text-white placeholder-white/50 focus:border-orange-500/50 focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition-all duration-300 resize-none"
+                  rows={4}
+                  className="w-full px-4 py-2 bg-slate-800/50 border border-slate-600/50 rounded-xl text-white text-sm placeholder-white/50 focus:outline-none resize-none"
                 ></textarea>
-                <div
-                  className={`absolute inset-0 bg-gradient-to-r from-orange-500/10 to-blue-500/10 rounded-xl pointer-events-none transition-opacity duration-300 ${
-                    focusedField === "message" ? "opacity-100" : "opacity-0"
-                  }`}
-                ></div>
               </div>
 
               {/* Submit Button */}
               <div
                 onClick={sendMail}
-                className="w-full py-3 bg-gradient-to-r from-orange-500 to-blue-500 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl cursor-pointer text-center"
+                className="w-full py-3 bg-blue-500 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl cursor-pointer text-center"
               >
                 {isSubmitting ? (
                   <div className="flex items-center justify-center gap-2">
