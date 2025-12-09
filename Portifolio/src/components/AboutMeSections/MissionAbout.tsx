@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 
 export default function MissionAbout() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
   const missions = [
     {
       icon: "💡",
@@ -26,14 +24,6 @@ export default function MissionAbout() {
       gradient: "from-orange-600 to-blue-500",
     },
   ];
-
-  useEffect(() => {
-    const handleMouseMove = (e: any) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center px-4 md:px-8 lg:px-12 py-20">
