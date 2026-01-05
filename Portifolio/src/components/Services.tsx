@@ -1,46 +1,55 @@
 import { useState } from "react";
+import { Icon } from "@iconify/react";
 
 const Services = () => {
   const [_, setHoveredService] = useState<number | null>(null);
 
   const services = [
     {
-      icon: "⚡",
+      icon: <Icon icon="devicon-plain:salesforce" width="34" height="34" />,
       title: "Salesforce Admin",
       description:
         "Expert Salesforce administration and customization to streamline your business processes.",
       color: "from-blue-500 to-cyan-500",
     },
+
     {
-      icon: "🎨",
-      title: "Graphic Design",
-      description:
-        "I design captivating visuals that communicate your brand's story effectively.",
-      color: "from-purple-500 to-pink-500",
-    },
-    {
-      icon: "🌐",
+      icon: <Icon icon="stash:pencil-writing" width="30" height="30" />,
       title: "Web Design",
       description:
         "I craft intuitive UX designs with Figma for a seamless user experience.",
       color: "from-teal-500 to-blue-500",
     },
     {
-      icon: "👨‍💻",
+      icon: (
+        <Icon
+          icon="material-symbols-light:developer-mode-tv-outline-rounded"
+          width="30"
+          height="30"
+        />
+      ),
       title: "Full Stack Development",
       description:
         "I build complete web applications from frontend interfaces to backend systems using React.js, Node.js, and MySQL databases.",
       color: "from-blue-400 to-green-600",
     },
     {
-      icon: "📱",
+      icon: <Icon icon="pajamas:machine-learning" width="30" height="30" />,
+      title: "Machine Learning ",
+      description:
+        "I design captivating visuals that communicate your brand's story effectively.",
+      color: "from-purple-500 to-pink-500",
+    },
+    {
+      icon: <Icon icon="iconoir:mobile-dev-mode" width="30" height="30" />,
       title: "Mobile Development",
       description:
         "I create native and cross-platform mobile applications for iOS and Android with modern frameworks and intuitive user interfaces.",
       color: "from-indigo-500 to-purple-600",
     },
+
     {
-      icon: "✍️",
+      icon: <Icon icon="stash:pencil-writing-light" width="30" height="30" />,
       title: "Writing",
       description:
         "I create impactful written content that resonates with readers.",
@@ -96,18 +105,13 @@ const Services = () => {
 
                 {/* Content */}
                 <div className="relative z-10 p-6 h-full flex flex-col">
-                  {/* Category Badge */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-2 h-2 bg-slate-500/50 rounded-full group-hover:bg-slate-400 transition-colors duration-300"></div>
-                  </div>
-
                   {/* Icon */}
                   <div className="flex justify-center mb-4">
                     <div className="relative w-16 h-16 bg-gradient-to-br from-slate-700/50 to-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-600/50 flex items-center justify-center group-hover:border-slate-500/50 transition-all duration-500 group-hover:scale-105">
                       <div
                         className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}
                       ></div>
-                      <div className="text-2xl relative z-10 group-hover:scale-105 transition-transform duration-300">
+                      <div className="text-2xl relative z-10 group-hover:scale-105 transition-transform duration-300 text-blue-500 font-bold">
                         {service.icon}
                       </div>
                     </div>

@@ -83,7 +83,7 @@ const SkillsSection = () => {
 
   return (
     <section
-      className="relative bg-transparent py-6 pb-4 px-4 md:px-8 lg:px-12 overflow-hidden lg:mx-5"
+      className="relative bg-transparent py-6 pb-22 px-4 md:px-8 lg:px-12 overflow-hidden lg:mx-5"
       id="services"
     >
       {/* Grid Pattern Overlay */}
