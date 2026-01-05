@@ -13,7 +13,7 @@ const ProjectsSection = () => {
       description:
         "An HR-FinTech Platform for African businesses and workforces, offering HR & Payroll Management Software plus Embedded Finance Products.",
       link: "https://www.sokofund.com/",
-      tags: ["Frontend", "Backend"],
+      tags: ["React JS", "MUI", "NodeJS+Express", "GraphQL API", "PostgreSQL"],
       height: "h-72",
     },
     {
@@ -23,7 +23,7 @@ const ProjectsSection = () => {
       description:
         "A comprehensive platform connecting Rwandan farmers with essential farming tools, expert knowledge, and streamlined agricultural resources for enhanced productivity.",
       link: "https://bloom-project.netlify.app/",
-      tags: ["Frontend", "Backend", "Figma"],
+      tags: ["Figma", "ReactJS", "Django", "MongoDB"],
       height: "h-72",
     },
     {
@@ -33,7 +33,7 @@ const ProjectsSection = () => {
       description:
         "A creative environmental initiative built with Next.js. MondeVert uses art, culture, and technology to inspire communities to embrace sustainable living.",
       link: "https://monde-vert-site.vercel.app/",
-      tags: ["Frontend", "Figma"],
+      tags: ["Figma", "NextJS", "Firebase"],
       height: "h-72",
     },
     {
@@ -43,7 +43,7 @@ const ProjectsSection = () => {
       description:
         "A user–admin platform for event registration, announcements, and promotions, with full content creation for admins, user management tools, and complete profile management.",
       link: "#",
-      tags: ["Frontend", ""],
+      tags: ["HTML", "TailwindCSS", "JQuerry", "NodeJS+Express", "MySQL"],
       height: "h-72",
     },
     {
@@ -53,7 +53,7 @@ const ProjectsSection = () => {
       description:
         "A mobile app that provides emergency preparedness tools and health literacy resources to Rwandans in Kinyarwanda.",
       link: "https://drive.google.com/file/d/1ME_a-gjXlTLBXoraHYnC0U28nCxyMi5v/view?usp=drive_link",
-      tags: ["Frontend", "Backend", "Figma"],
+      tags: [" Figma", "Flutter", "Firebase", "GEMINI AI"],
       height: "h-72",
     },
     {
@@ -63,7 +63,7 @@ const ProjectsSection = () => {
       description:
         "An ML system that predicts disease prevalence rates based on health indicators, socioeconomic factors, and healthcare infrastructure",
       link: "https://linear-regression-model-f74t.onrender.com/docs",
-      tags: ["Frontend", "Backend", "Linear Regression Model"],
+      tags: ["Tensorflow", "Linear Regression Model", "FastAPI"],
       height: "h-72",
     },
     {
@@ -84,7 +84,7 @@ const ProjectsSection = () => {
       description:
         "Intuitive digital drawing application with user-friendly interface for creating and editing artwork with various tools and brushes.",
       link: "https://benitha06.github.io/draw/",
-      tags: ["Frontend"],
+      tags: ["HTML", "CSS", "JavaScript"],
       height: "h-72",
     },
   ];

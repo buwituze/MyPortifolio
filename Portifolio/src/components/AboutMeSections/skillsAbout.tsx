@@ -114,7 +114,7 @@ const SkillsSection = () => {
               onMouseLeave={() => setHoveredSkill(null)}
             >
               {/* Icon */}
-              <div className="relative w-9 h-8 md:w-10 md:h-10 transition-transform duration-300 group-hover:scale-110">
+              <div className="relative w-8 h-8 md:w-10 md:h-10 transition-transform duration-300 group-hover:scale-110">
                 <img
                   src={skill.icon}
                   alt={`${skill.name} icon`}
