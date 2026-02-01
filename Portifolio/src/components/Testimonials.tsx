@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Icon } from "@iconify/react";
 
 const Testimonials = () => {
   const [_, setHoveredIndex] = useState<number | null>(null);
@@ -9,6 +10,7 @@ const Testimonials = () => {
       image: "/images/anne.jpeg",
       name: "Anne Marie Twagirayezu",
       position: "Fellow ALU Student",
+      linkedin: "https://www.linkedin.com/in/twagirayezu-anne-marie535257/",
       company: "African Leadership University (ALU)",
       text: "With a meticulous eye for detail and a strong passion for quality, she bridges the gap between vision and execution, making her an exceptional team player.",
     },
@@ -16,8 +18,17 @@ const Testimonials = () => {
       image: "/images/Admin lead.png",
       name: "Honorine Uwicyubahiro",
       position: "Administration Lead",
+      linkedin: "https://www.linkedin.com/in/honorineuwicyubahiro/",
       company: "African Leadership University (ALU)",
       text: "A dynamic problem-solver who consistently delivers innovative solutions with precision and skill. Always brings clarity and efficiency to complex challenges.",
+    },
+    {
+      image: "/images/simon.jpeg",
+      name: "Simon Imanigirimpuhwe",
+      position: "Lead Software Developer",
+      linkedin: "https://www.linkedin.com/in/simon-imanigirimpuhwe-2aaba7146/",
+      company: "Umurava",
+      text: "Benitha was a strong teammate with solid foundational development skills; she communicated clearly, took initiative, and showed a clear willingness to learn and improve.",
     },
     // {
     //   image: "/images/Admin lead.png",
@@ -80,16 +91,16 @@ const Testimonials = () => {
               style={{ animationDelay: `${index * 200}ms` }}
             >
               {/* Card */}
-              <div className="relative bg-slate-800/40 backdrop-blur-sm rounded-xl border border-slate-700/30 p-6 transition-all duration-500 hover:border-slate-600/50 hover:shadow-xl overflow-hidden h-full flex flex-col">
+              <div className="relative bg-slate-800/40 backdrop-blur-sm rounded-xl border border-slate-700/30 p-5 transition-all duration-500 hover:border-slate-600/50 hover:shadow-xl overflow-hidden h-full flex flex-col">
                 {/* Quote Icon */}
-                <div className="relative z-10 mb-4">
-                  <div className="text-7xl text-slate-400/60 font-serif leading-none">
+                <div className="relative z-10 -mb-2">
+                  <div className="text-6xl text-slate-400/60 font-serif leading-none">
                     "
                   </div>
                 </div>
 
                 {/* Testimonial Text */}
-                <div className="relative z-10 mb-6 flex-1">
+                <div className="relative z-10 mb-4 flex-1">
                   <p className="text-white/80 text-base leading-relaxed">
                     {testimonial.text}
                   </p>
@@ -120,9 +131,20 @@ const Testimonials = () => {
                     <h4 className="text-white font-semibold text-sm group-hover:text-white/90 transition-colors duration-300">
                       {testimonial.name}
                     </h4>
-                    <p className="text-slate-400 text-xs mb-0.5">
-                      {testimonial.position}
-                    </p>
+                    <div className="flex items-center gap-1.5 mb-0.5">
+                      <p className="text-slate-400 text-xs">
+                        {testimonial.position}
+                      </p>
+                      <a
+                        href={testimonial.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#0A66C2] hover:text-[#004182] transition-colors duration-300 flex-shrink-0"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Icon icon="bi:linkedin" width="14" height="14" />
+                      </a>
+                    </div>
                     <p className="text-blue-500 text-xs">
                       {testimonial.company}
                     </p>
@@ -130,7 +152,7 @@ const Testimonials = () => {
                 </div>
 
                 {/* Closing Quote */}
-                <div className="absolute bottom-4 right-4 text-6xl text-slate-400/60 font-serif leading-none">
+                <div className="absolute bottom-3 right-3 text-5xl text-slate-400/60 font-serif leading-none">
                   "
                 </div>
               </div>
