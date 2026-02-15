@@ -38,7 +38,7 @@ const ProjectsSection = () => {
     },
     {
       id: "civicevents+",
-      image: "/images/MondVertSite.png",
+      image: "/images/civicevents.png",
       title: "CivicEvents+",
       description:
         "A user–admin platform for event registration, announcements, and promotions, with full content creation for admins, user management tools, and complete profile management.",
@@ -115,7 +115,7 @@ const ProjectsSection = () => {
 
   return (
     <section
-      className="relative min-h-screen bg-transparent pt-10 lg:mx-5 px-4 md:px-8 lg:px-12 overflow-hidden"
+      className="relative min-h-screen bg-transparent pt-10 px-2 md:px-4 lg:px-16 overflow-hidden"
       id="resume"
     >
       {/* Grid Pattern Overlay */}
@@ -137,13 +137,13 @@ const ProjectsSection = () => {
             </span>
           </h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            Discover the digital experiences I've crafted with passion and
-            precision
+            Discover different projects and experiences I have built over the
+            years
           </p>
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mb-12">
           {allProjects.map((project, index) => (
             <div
               key={`${project.title}-${index}`}
@@ -153,7 +153,7 @@ const ProjectsSection = () => {
               style={{ animationDelay: `${index * 200}ms` }}
             >
               <div
-                className={`relative ${project.height} bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl border border-slate-700/50 overflow-hidden transition-all duration-700 hover:shadow-xl hover:shadow-slate-700/70`}
+                className={`relative ${project.height} bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-xl border border-slate-700/50 overflow-hidden transition-all duration-700`}
               >
                 {/* Project Image */}
                 <div className="relative w-full h-full overflow-hidden">
@@ -191,7 +191,7 @@ const ProjectsSection = () => {
                           window.open(
                             project.link,
                             "_blank",
-                            "noopener,noreferrer"
+                            "noopener,noreferrer",
                           );
                         }}
                         className="group/icon p-2 bg-white/15 backdrop-blur-md rounded-lg border border-white/30 text-white hover:bg-orange-500/90 hover:border-orange-500/50 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-orange-500/50 z-50"

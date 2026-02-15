@@ -30,20 +30,6 @@ const Testimonials = () => {
       company: "Umurava",
       text: "Benitha was a strong teammate with solid foundational development skills; she communicated clearly, took initiative, and showed a clear willingness to learn and improve.",
     },
-    // {
-    //   image: "/images/Admin lead.png",
-    //   name: "Sam Umurava",
-    //   position: "Talent Lead",
-    //   company: "Umurava",
-    //   text: "A dynamic problem-solver who consistently delivers innovative solutions with precision and skill. Always brings clarity and efficiency to complex challenges.",
-    // },
-    // {
-    //   image: "/images/Admin lead.png",
-    //   name: ",....Game Lead",
-    //   position: "Talent Lead",
-    //   company: "....",
-    //   text: "A dynamic problem-solver who consistently delivers innovative solutions with precision and skill. Always brings clarity and efficiency to complex challenges.",
-    // },
   ];
 
   useEffect(() => {
@@ -56,7 +42,7 @@ const Testimonials = () => {
 
   return (
     <section
-      className="relative min-h-screen pt-10 px-4 md:px-8 lg:px-12 overflow-hidden"
+      className="relative min-h-screen pt-10 px-4 md:px-8 lg:px-16 overflow-hidden"
       id="testimonials"
     >
       {/* Grid Pattern Overlay */}
@@ -75,13 +61,13 @@ const Testimonials = () => {
             Some Nice Words
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            What people say about working with me and the impact of our
-            collaboration
+            What people say about working and studying with me and the impact of
+            our collaboration
           </p>
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-8xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
