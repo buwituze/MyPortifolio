@@ -71,12 +71,12 @@ const SkillsSection = () => {
     },
     {
       name: "PostreSQL",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
       color: "from-blue-600 to-blue-800",
     },
     {
       name: "MongoDB",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
       color: "from-blue-600 to-blue-800",
     },
   ];
