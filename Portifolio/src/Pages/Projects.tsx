@@ -1,6 +1,20 @@
 import { ExternalLink, ArrowRight } from "lucide-react";
+import { useEffect } from "react";
 
 const Projects = () => {
+  // Handle scrolling to project when hash is present in URL
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const id = hash.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 100);
+      }
+    }
+  }, []);
   const allProjects = [
     {
       id: "skofund",
