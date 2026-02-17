@@ -1,175 +1,95 @@
-import { useState, useEffect, useRef } from "react";
-import { ExternalLink, Eye } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
 
-const ProjectsSection = () => {
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
-  const [showMore, _] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  // Intersection Observer to detect when section is in view
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 },
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
-  // Styles for falling animation
-  const fallingHeadingStyle = `
-    @keyframes fallBounce {
-      0% {
-        transform: translateY(-400px);
-        opacity: 0;
-      }
-      70% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      85% {
-        transform: translateY(-20px);
-      }
-      100% {
-        transform: translateY(0);
-      }
-    }
-    
-    .falling-heading {
-      animation: fallBounce 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    }
-  `;
-
-  const featuredProjects = [
+const Projects = () => {
+  const allProjects = [
     {
       id: "skofund",
       image: "/images/SokoFund.png",
       title: "SokoFund",
       description:
-        "An HR-FinTech Platform for African businesses and workforces, offering HR & Payroll Management Software plus Embedded Finance Products.",
+        "An HR-FinTech Platform for African businesses and workforces, offering HR & Payroll Management Software plus Embedded Finance Products. This comprehensive solution streamlines workforce management while providing essential financial services.",
       link: "https://www.sokofund.com/",
       tags: ["React JS", "MUI", "NodeJS+Express", "GraphQL API", "PostgreSQL"],
-      height: "h-72",
     },
     {
       id: "bloom-web-app",
       image: "/images/newbloomwebapp.png",
       title: "Bloom Web App",
       description:
-        "A comprehensive platform connecting Rwandan farmers with essential farming tools, expert knowledge, and streamlined agricultural resources for enhanced productivity.",
+        "A comprehensive platform connecting Rwandan farmers with essential farming tools, expert knowledge, and streamlined agricultural resources for enhanced productivity. Empowering the agricultural community through technology.",
       link: "https://bloom-project.netlify.app/",
       tags: ["Figma", "ReactJS", "Django", "MongoDB"],
-      height: "h-72",
     },
     {
       id: "mondevert-site",
       image: "/images/MondVertSite.png",
       title: "MondeVert",
       description:
-        "A creative environmental initiative built with Next.js. MondeVert uses art, culture, and technology to inspire communities to embrace sustainable living.",
+        "A creative environmental initiative built with Next.js. MondeVert uses art, culture, and technology to inspire communities to embrace sustainable living and environmental consciousness.",
       link: "https://monde-vert-site.vercel.app/",
       tags: ["Figma", "NextJS", "Firebase"],
-      height: "h-72",
     },
     {
       id: "civicevents+",
       image: "/images/civicevents.png",
       title: "CivicEvents+",
       description:
-        "A user–admin platform for event registration, announcements, and promotions, with full content creation for admins, user management tools, and complete profile management.",
+        "A user–admin platform for event registration, announcements, and promotions, with full content creation for admins, user management tools, and complete profile management capabilities.",
       link: "#",
-      tags: ["HTML", "TailwindCSS", "JQuerry", "NodeJS+Express", "MySQL"],
-      height: "h-72",
+      tags: ["HTML", "TailwindCSS", "jQuery", "NodeJS+Express", "MySQL"],
     },
     {
       id: "mfasha-health-app",
       image: "/images/mfasha.png",
       title: "Mfasha",
       description:
-        "A mobile app that provides emergency preparedness tools and health literacy resources to Rwandans in Kinyarwanda.",
+        "A mobile app that provides emergency preparedness tools and health literacy resources to Rwandans in Kinyarwanda. Making healthcare information accessible in the local language.",
       link: "https://drive.google.com/file/d/1ME_a-gjXlTLBXoraHYnC0U28nCxyMi5v/view?usp=drive_link",
-      tags: [" Figma", "Flutter", "Firebase", "GEMINI AI"],
-      height: "h-72",
+      tags: ["Figma", "Flutter", "Firebase", "GEMINI AI"],
     },
     {
       id: "health-predict",
       image: "/images/healthpredictapi.png",
       title: "HealthPredict",
       description:
-        "An ML system that predicts disease prevalence rates based on health indicators, socioeconomic factors, and healthcare infrastructure",
+        "An ML system that predicts disease prevalence rates based on health indicators, socioeconomic factors, and healthcare infrastructure. Leveraging data science for better healthcare planning.",
       link: "https://linear-regression-model-f74t.onrender.com/docs",
-      tags: ["Tensorflow", "Linear Regression Model", "FastAPI"],
-      height: "h-72",
+      tags: ["Tensorflow", "Linear Regression", "FastAPI"],
     },
     {
       id: "health-spot",
       image: "/images/HealthSpotIMG.png",
       title: "HealthSpot",
       description:
-        "An ML model leveraging satellite imagery to identify underserved rural areas in Rwanda and suggest optimal locations for health facilities.",
+        "An ML model leveraging satellite imagery to identify underserved rural areas in Rwanda and suggest optimal locations for health facilities. Using AI to improve healthcare accessibility.",
       link: "https://github.com/buwituze/HealthSpot_Model",
-      tags: ["NN Model", "Loistic Regression Model", "XBoost Model"],
-      height: "h-72",
+      tags: ["Neural Network", "Logistic Regression", "XGBoost"],
     },
-
     {
       id: "draw-app",
       image: "/images/drawapp.png",
       title: "Draw App",
       description:
-        "Intuitive digital drawing application with user-friendly interface for creating and editing artwork with various tools and brushes.",
+        "Intuitive digital drawing application with user-friendly interface for creating and editing artwork with various tools and brushes. A simple yet powerful creative tool.",
       link: "https://benitha06.github.io/draw/",
       tags: ["HTML", "CSS", "JavaScript"],
-      height: "h-72",
     },
-  ];
-
-  const moreProjects = [
     {
       id: "agro-commerce",
       image: "/images/agrocommerce.png",
       title: "Agro-Commerce",
       description:
-        "E-commerce platform bridging the gap between farmers and agricultural suppliers, making farming resources more accessible.",
+        "E-commerce platform bridging the gap between farmers and agricultural suppliers, making farming resources more accessible. Connecting agriculture stakeholders through digital commerce.",
       link: "https://honolinekamurerwa.github.io/Agro-Center/index.html",
-      tags: ["Frontend", "Figma"],
-      height: "h-74",
+      tags: ["HTML", "CSS", "JavaScript", "Figma"],
     },
   ];
 
-  const allProjects = showMore
-    ? [...featuredProjects, ...moreProjects]
-    : featuredProjects;
-
-  const scrollToSection = (sectionId: any) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section
-      ref={sectionRef}
-      className="relative min-h-screen bg-transparent pt-10 px-2 md:px-4 lg:px-16 overflow-hidden"
-      id="resume"
+      className="relative min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 pt-10 px-4 md:px-8 lg:px-16 pb-20"
+      id="projects"
     >
-      {/* Inject animation styles */}
-      <style>{fallingHeadingStyle}</style>
-
       {/* Grid Pattern Overlay */}
       <div
         className="absolute inset-0 opacity-10"
@@ -182,122 +102,91 @@ const ProjectsSection = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16 overflow-hidden pt-32">
-          <h2
-            className={`text-2xl md:text-2xl text-blue-500 lg:text-3xl font-bold mb-6 ${isVisible ? "falling-heading" : "opacity-0"}`}
-          >
-            <span className="bg-blue-500 bg-clip-text text-transparent">
-              Check out my Projects
+        <div className="text-center mb-20 pt-28 md:pt-32">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+              My Projects
             </span>
           </h2>
-          <p className="text-xl text-white/80 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
             Discover different projects and experiences I have built over the
             years
           </p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mb-12">
+        {/* Projects List - Each project in its own section */}
+        <div className="space-y-16 mb-20">
           {allProjects.map((project, index) => (
-            <div
-              key={`${project.title}-${index}`}
-              className="group cursor-pointer"
-              onMouseEnter={() => setHoveredProject(index)}
-              onMouseLeave={() => setHoveredProject(null)}
-              style={{ animationDelay: `${index * 200}ms` }}
-            >
-              <div
-                className={`relative ${project.height} bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-xl border border-slate-700/50 overflow-hidden transition-all duration-700`}
-              >
-                {/* Project Image */}
-                <div className="relative w-full h-full overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
+            <div key={project.id} id={project.id} className="group relative">
+              {/* Project Container */}
+              <div className="relative bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md rounded-2xl border border-slate-700/50 overflow-hidden hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20">
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-0 md:gap-8">
+                  {/* Left Side - Image (Portrait orientation - taller than wide) */}
+                  <div className="md:col-span-2 relative h-64 md:h-96 lg:h-[500px] overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20"></div>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent md:bg-gradient-to-r md:from-transparent md:via-slate-900/10 md:to-slate-900/90"></div>
+                  </div>
 
-                  {/* Enhanced Blue Gradient Overlay - Stronger on hover */}
-                  <div
-                    className={`absolute inset-0 transition-all duration-500 ${
-                      hoveredProject === index
-                        ? "bg-gradient-to-t from-blue-600/95 via-blue-600/70 to-blue-500/40"
-                        : "bg-gradient-to-t from-blue-500/80 via-blue-500/40 to-transparent"
-                    }`}
-                  ></div>
-                </div>
+                  {/* Right Side - Content */}
+                  <div className="md:col-span-3 p-6 md:p-8 lg:p-10 flex flex-col justify-center">
+                    {/* Project Number */}
+                    <div className="text-blue-400/40 font-bold text-6xl md:text-7xl lg:text-8xl mb-4">
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
 
-                {/* Always Visible Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 pointer-events-none">
-                  {/* Project Title with Action Buttons */}
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-bold text-white drop-shadow-lg">
+                    {/* Project Title */}
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors duration-300">
                       {project.title}
                     </h3>
 
-                    {/* Action Buttons beside title */}
-                    <div className="flex items-center gap-2 pointer-events-auto">
-                      {/* External Link Button */}
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          e.preventDefault();
-                          window.open(
-                            project.link,
-                            "_blank",
-                            "noopener,noreferrer",
-                          );
-                        }}
-                        className="group/icon p-2 bg-white/15 backdrop-blur-md rounded-lg border border-white/30 text-white hover:bg-orange-500/90 hover:border-orange-500/50 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-orange-500/50 z-50"
-                        title="Open project in new tab"
-                      >
-                        <ExternalLink
-                          size={14}
-                          className="transition-transform duration-300 group-hover/icon:rotate-12"
-                        />
-                      </button>
-
-                      {/* View Details Button */}
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          e.preventDefault();
-                          scrollToSection(project.id);
-                        }}
-                        className="group/icon p-2 bg-white/15 backdrop-blur-md rounded-lg border border-white/30 text-white hover:bg-blue-500/90 hover:border-blue-500/50 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/50 z-50"
-                        title="View project details"
-                      >
-                        <Eye
-                          size={14}
-                          className="transition-transform duration-300 group-hover/icon:scale-110"
-                        />
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Hover Content - Description and Tags with Smooth Slide Up */}
-                  <div
-                    className={`transition-all duration-500 ease-out ${
-                      hoveredProject === index
-                        ? "opacity-100 translate-y-0 max-h-40"
-                        : "opacity-0 translate-y-6 max-h-0"
-                    } overflow-hidden`}
-                  >
                     {/* Project Description */}
-                    <p className="text-white/95 text-sm leading-relaxed mb-3 drop-shadow-md">
+                    <p className="text-white/70 text-sm md:text-base lg:text-lg leading-relaxed mb-6">
                       {project.description}
                     </p>
 
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2">
+                    {/* Technology Tags */}
+                    <div className="flex flex-wrap gap-2 mb-8">
                       {project.tags.map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className="text-xs px-3 py-1.5 bg-white/25 backdrop-blur-sm rounded-full text-white border border-white/40 shadow-lg"
+                          className="px-4 py-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/30 rounded-lg text-blue-300 text-xs md:text-sm font-medium hover:bg-blue-500/20 hover:border-blue-400/50 transition-all duration-300"
                         >
                           {tag}
                         </span>
                       ))}
+                    </div>
+
+                    {/* Visit Site Button */}
+                    <div className="flex gap-4">
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50 hover:scale-105 group/btn"
+                      >
+                        <span>Visit Site</span>
+                        <ExternalLink
+                          size={18}
+                          className="transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"
+                        />
+                      </a>
+
+                      <button
+                        onClick={() => window.open(project.link, "_blank")}
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-lg hover:bg-white/10 hover:border-white/40 transition-all duration-300 group/btn2"
+                      >
+                        <span>Learn More</span>
+                        <ArrowRight
+                          size={18}
+                          className="transition-transform duration-300 group-hover/btn2:translate-x-1"
+                        />
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -306,28 +195,8 @@ const ProjectsSection = () => {
           ))}
         </div>
       </div>
-
-      {/* Custom Animations */}
-      <style>{`
-        @keyframes slideInUp {
-          from {
-            opacity: 0;
-            transform: translateY(50px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .group {
-          animation: slideInUp 0.8s ease-out forwards;
-          opacity: 0;
-          animation-fill-mode: both;
-        }
-      `}</style>
     </section>
   );
 };
 
-export default ProjectsSection;
+export default Projects;

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 const ProjectsSection = () => {
   const [hoveredProject, setHoveredProject] = useState<number>(0);
@@ -229,6 +230,15 @@ const ProjectsSection = () => {
 
           {/* Right Side - Project Titles List */}
           <div className="lg:w-2/5 w-full lg:mt-10">
+            {/* All Projects Link */}
+            <Link
+              to="/all-projects"
+              className="inline-flex items-center gap-2 text-gray-400 text-sm mb-0 transition-all duration-300 hover:gap-3 group"
+            >
+              <span className="text-lg">→</span>
+              <span>All Projects</span>
+            </Link>
+
             {/* Scrollable container - shows 6 items, rest can be scrolled */}
             <div className="space-y-0 max-h-[400px] overflow-y-auto pr-2 scrollbar-hide hover:scrollbar-thin hover:scrollbar-thumb-slate-700/30 hover:scrollbar-track-transparent">
               {allProjects.map((project, index) => (
@@ -247,15 +257,17 @@ const ProjectsSection = () => {
                     ></div>
 
                     {/* Project Title */}
-                    <h4
-                      className={`text-lg font-semibold transition-all duration-300 ${
-                        hoveredProject === index
-                          ? "text-white translate-x-4"
-                          : "text-white/80 translate-x-0"
-                      }`}
-                    >
-                      {project.title}
-                    </h4>
+                    <Link to={`/all-projects#${project.id}`}>
+                      <h4
+                        className={`text-lg font-semibold transition-all duration-300 ${
+                          hoveredProject === index
+                            ? "text-white translate-x-4"
+                            : "text-white/80 translate-x-0"
+                        }`}
+                      >
+                        {project.title}
+                      </h4>
+                    </Link>
                   </div>
 
                   {/* Divider Line - show under all items including the last one */}

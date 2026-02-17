@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // Configuration object for easy management
 const navbarConfig = {
@@ -12,6 +13,7 @@ const navbarConfig = {
     { type: "anchor", href: "#about", label: "About" },
     { type: "anchor", href: "#services", label: "Services" },
     { type: "anchor", href: "#resume", label: "Resume" },
+    { type: "link", to: "/all-projects", label: "Projects" },
     { type: "anchor", href: "#contact", label: "Contact" },
   ],
   socialLinks: [
@@ -70,7 +72,6 @@ const Navbar = () => {
     item: NavigationItem;
     isMobile?: boolean;
   }) => {
-    const href = item.type === "link" ? item.to : item.href;
     const baseClasses = `
       block no-underline font-medium text-base px-4 py-2 rounded-full
       transition-all duration-300 ease-out relative overflow-hidden
@@ -83,17 +84,25 @@ const Navbar = () => {
 
     const mobileClasses = "text-white/90 hover:bg-orange-500/10";
 
+    const className = `${baseClasses} ${
+      isMobile ? mobileClasses : desktopClasses
+    }`;
+
     return (
       <li>
-        <a
-          href={href}
-          className={`${baseClasses} ${
-            isMobile ? mobileClasses : desktopClasses
-          }`}
-          onClick={closeMobileMenu}
-        >
-          {item.label}
-        </a>
+        {item.type === "link" ? (
+          <Link
+            to={item.to || "#"}
+            className={className}
+            onClick={closeMobileMenu}
+          >
+            {item.label}
+          </Link>
+        ) : (
+          <a href={item.href} className={className} onClick={closeMobileMenu}>
+            {item.label}
+          </a>
+        )}
       </li>
     );
   };

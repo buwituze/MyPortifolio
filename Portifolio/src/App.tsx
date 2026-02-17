@@ -5,7 +5,7 @@ import Home from "./Pages/Home";
 import CustomCursor from "./components/CustomCursor";
 import AOS from "aos";
 import { useEffect } from "react";
-// import allProjects from "./Pages/Projects";
+import Projects from "./Pages/Projects";
 
 function App() {
   useEffect(() => {
@@ -25,7 +25,7 @@ function App() {
             </>
           }
         />
-        {/* <Route path="/all-projects" element={<allProjects />} /> */}
+        <Route path="/all-projects" element={<Projects />} />
       </Routes>
       <Footer />
     </Router>
