@@ -14,6 +14,54 @@ const Contact = () => {
     message?: string;
   } | null>(null);
   const [_, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Intersection Observer to detect when section is in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 },
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  // Styles for falling animation
+  const fallingHeadingStyle = `
+    @keyframes fallBounce {
+      0% {
+        transform: translateY(-400px);
+        opacity: 0;
+      }
+      70% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      85% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    
+    .falling-heading {
+      animation: fallBounce 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+  `;
 
   // Word Sphere State
   const containerRef = useRef<HTMLDivElement>(null);
@@ -51,7 +99,7 @@ const Contact = () => {
   }, []);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -102,13 +150,19 @@ const Contact = () => {
 
   return (
     <section
+      ref={sectionRef}
       className="relative min-h-screen bg-transparent pt-12 pb-20 px-4 md:px-8 lg:px-12 overflow-hidden"
       id="contact"
     >
+      {/* Inject animation styles */}
+      <style>{fallingHeadingStyle}</style>
+
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-2xl md:text-2xl text-blue-500 lg:text-3xl font-bold mb-6">
+        <div className="text-center mb-16 overflow-hidden pt-32">
+          <h2
+            className={`text-2xl md:text-2xl text-blue-500 lg:text-3xl font-bold mb-6 ${isVisible ? "falling-heading" : "opacity-0"}`}
+          >
             Contact Me
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">

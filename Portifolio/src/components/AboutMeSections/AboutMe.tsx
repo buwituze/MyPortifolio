@@ -1,6 +1,55 @@
 import { Icon } from "@iconify/react";
+import { useState, useEffect, useRef } from "react";
 
 const AboutMe = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Intersection Observer to detect when section is in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }, // Trigger when 20% of section is visible
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  // Styles for falling animation
+  const fallingHeadingStyle = `
+    @keyframes fallBounce {
+      0% {
+        transform: translateY(-400px);
+        opacity: 0;
+      }
+      70% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      85% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    
+    .falling-heading {
+      animation: fallBounce 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+  `;
   const skills = [
     {
       name: "Full-Stack Dev",
@@ -59,16 +108,22 @@ const AboutMe = () => {
 
   return (
     <section
+      ref={sectionRef}
       id="aboutme"
-      className="relative bg-transparent py-12 lg:mx-5 px-4 md:px-8 lg:px-12 "
+      className="relative bg-transparent py-12 lg:mx-5 px-4 md:px-8 lg:px-12 overflow-hidden"
     >
+      {/* Inject animation styles */}
+      <style>{fallingHeadingStyle}</style>
+
       {/* Subtle gradient overlay for smooth transition */}
       <div className="absolute inset-0"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="mx-auto text-3xl md:text-3xl font-bold bg-blue-500 bg-clip-text text-transparent mb-4">
+        <div className="text-center mb-12 overflow-hidden pt-32">
+          <h2
+            className={`mx-auto text-3xl md:text-3xl font-bold bg-blue-500 bg-clip-text text-transparent mb-4 ${isVisible ? "falling-heading" : "opacity-0"}`}
+          >
             Who Am I?
           </h2>
           {/* <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-blue-500 mx-auto rounded-full"></div> */}

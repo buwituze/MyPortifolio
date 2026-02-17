@@ -1,7 +1,55 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const SkillsSection = () => {
   const [_hoveredSkill, setHoveredSkill] = useState<number | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Intersection Observer to detect when section is in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 },
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  // Styles for falling animation
+  const fallingHeadingStyle = `
+    @keyframes fallBounce {
+      0% {
+        transform: translateY(-400px);
+        opacity: 0;
+      }
+      70% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      85% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+    
+    .falling-heading {
+      animation: fallBounce 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+  `;
 
   const skills = [
     {
@@ -83,9 +131,13 @@ const SkillsSection = () => {
 
   return (
     <section
+      ref={sectionRef}
       className="relative bg-transparent py-6 pb-22 px-4 md:px-8 lg:px-12 overflow-hidden lg:mx-5"
       id="services"
     >
+      {/* Inject animation styles */}
+      <style>{fallingHeadingStyle}</style>
+
       {/* Grid Pattern Overlay */}
       <div
         className="absolute inset-0 opacity-10"
@@ -98,8 +150,10 @@ const SkillsSection = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-2xl md:text-2xl lg:text-3xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+        <div className="text-center mb-16 overflow-hidden pt-32">
+          <h2
+            className={`text-2xl md:text-2xl lg:text-3xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent ${isVisible ? "falling-heading" : "opacity-0"}`}
+          >
             Skills & Technologies
           </h2>
         </div>
