@@ -104,18 +104,7 @@ const Projects = () => {
       className="relative min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 pt-10 px-4 md:px-8 lg:px-16 pb-20"
       id="projects"
     >
-      {/* Grid Pattern Overlay */}
-      <div
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-          backgroundSize: "50px 50px",
-        }}
-      ></div>
-
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-20 pt-28 md:pt-32">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
@@ -128,43 +117,32 @@ const Projects = () => {
           </p>
         </div>
 
-        {/* Projects List - Each project in its own section */}
         <div className="space-y-16 mb-20">
           {allProjects.map((project, index) => (
             <div key={project.id} id={project.id} className="group relative">
-              {/* Project Container */}
-              <div className="relative bg-gradient-to-br from-slate-800/40 to-slate-900/40 backdrop-blur-md rounded-2xl border border-slate-700/50 overflow-hidden hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/20">
-                <div className="grid grid-cols-1 md:grid-cols-5 gap-0 md:gap-8">
-                  {/* Left Side - Image (Portrait orientation - taller than wide) */}
-                  <div className="md:col-span-2 relative h-64 md:h-96 lg:h-[500px] overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20"></div>
+              <div className="relative overflow-hidden transition-all duration-500">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-10">
+                  <div className="relative h-64 md:h-96 lg:h-[500px] overflow-hidden">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover rounded-xl"
                     />
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent md:bg-gradient-to-r md:from-transparent md:via-slate-900/10 md:to-slate-900/90"></div>
                   </div>
 
-                  {/* Right Side - Content */}
-                  <div className="md:col-span-3 p-6 md:p-8 lg:p-10 flex flex-col justify-center">
-                    {/* Project Number */}
+                  <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center">
                     <div className="text-blue-400/40 font-bold text-6xl md:text-7xl lg:text-8xl mb-4">
                       {String(index + 1).padStart(2, "0")}
                     </div>
 
-                    {/* Project Title */}
                     <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors duration-300">
                       {project.title}
                     </h3>
 
-                    {/* Project Description */}
                     <p className="text-white/70 text-sm md:text-base lg:text-lg leading-relaxed mb-6">
                       {project.description}
                     </p>
 
-                    {/* Technology Tags */}
                     <div className="flex flex-wrap gap-2 mb-8">
                       {project.tags.map((tag, tagIndex) => (
                         <span
@@ -176,7 +154,6 @@ const Projects = () => {
                       ))}
                     </div>
 
-                    {/* Visit Site Button */}
                     <div className="flex gap-4">
                       <a
                         href={project.link}

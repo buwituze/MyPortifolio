@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const ProjectsSection = () => {
   const [hoveredProject, setHoveredProject] = useState<number>(0);
-  const [showMore, _] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -29,7 +28,6 @@ const ProjectsSection = () => {
     };
   }, []);
 
-  // Styles for falling animation
   const fallingHeadingStyle = `
     @keyframes fallBounce {
       0% {
@@ -135,9 +133,6 @@ const ProjectsSection = () => {
       tags: ["HTML", "CSS", "JavaScript"],
       height: "h-72",
     },
-  ];
-
-  const moreProjects = [
     {
       id: "agro-commerce",
       image: "/images/agrocommerce.png",
@@ -150,20 +145,14 @@ const ProjectsSection = () => {
     },
   ];
 
-  const allProjects = showMore
-    ? [...featuredProjects, ...moreProjects]
-    : featuredProjects;
-
   return (
     <section
       ref={sectionRef}
       className="relative min-h-screen bg-transparent pt-10 px-2 md:px-4 lg:px-16 overflow-hidden"
       id="resume"
     >
-      {/* Inject animation styles */}
       <style>{fallingHeadingStyle}</style>
 
-      {/* Custom scrollbar styles */}
       <style>{`
         /* Hide scrollbar by default */
         .scrollbar-hide::-webkit-scrollbar {
@@ -184,7 +173,6 @@ const ProjectsSection = () => {
         }
       `}</style>
 
-      {/* Grid Pattern Overlay */}
       <div
         className="absolute inset-0 opacity-10"
         style={{
@@ -193,8 +181,8 @@ const ProjectsSection = () => {
           backgroundSize: "50px 50px",
         }}
       ></div>
+
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-6 overflow-hidden pt-32">
           <h2
             className={`text-2xl md:text-2xl text-blue-500 lg:text-3xl font-bold mb-6 ${isVisible ? "falling-heading" : "opacity-0"}`}
@@ -205,13 +193,11 @@ const ProjectsSection = () => {
           </h2>
         </div>
 
-        {/* Split Layout: Image on Left, Project List on Right */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-28 mb-12">
-          {/* Left Side - Project Image Display */}
           {/* Control image size here: adjust lg:w-* for width and h-[*px] for height */}
           <div className="lg:w-3/5 w-full">
             <div className="relative h-[440px] bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-tr-2xl rounded-br-2xl border border-slate-700/50 overflow-hidden">
-              {allProjects.map((project, index) => (
+              {featuredProjects.map((project, index) => (
                 <div
                   key={`image-${project.title}-${index}`}
                   className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
@@ -228,9 +214,7 @@ const ProjectsSection = () => {
             </div>
           </div>
 
-          {/* Right Side - Project Titles List */}
           <div className="lg:w-2/5 w-full lg:mt-10">
-            {/* All Projects Link */}
             <Link
               to="/all-projects"
               className="inline-flex items-center gap-2 text-gray-400 text-sm mb-0 transition-all duration-300 hover:gap-3 group"
@@ -241,13 +225,12 @@ const ProjectsSection = () => {
 
             {/* Scrollable container - shows 6 items, rest can be scrolled */}
             <div className="space-y-0 max-h-[400px] overflow-y-auto pr-2 scrollbar-hide hover:scrollbar-thin hover:scrollbar-thumb-slate-700/30 hover:scrollbar-track-transparent">
-              {allProjects.map((project, index) => (
+              {featuredProjects.map((project, index) => (
                 <div key={`title-${project.title}-${index}`}>
                   <div
                     className="relative py-6 px-4 cursor-pointer group transition-all duration-300"
                     onMouseEnter={() => setHoveredProject(index)}
                   >
-                    {/* Bullet Point - Appears on Hover */}
                     <div
                       className={`absolute left-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full transition-all duration-300 ${
                         hoveredProject === index
@@ -256,7 +239,6 @@ const ProjectsSection = () => {
                       }`}
                     ></div>
 
-                    {/* Project Title */}
                     <Link to={`/all-projects#${project.id}`}>
                       <h4
                         className={`text-lg font-semibold transition-all duration-300 ${
@@ -270,7 +252,6 @@ const ProjectsSection = () => {
                     </Link>
                   </div>
 
-                  {/* Divider Line - show under all items including the last one */}
                   <div className="w-full h-0.5 bg-white/60"></div>
                 </div>
               ))}
