@@ -147,7 +147,7 @@ const Projects = () => {
                       {project.tags.map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
-                          className="px-4 py-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/30 rounded-lg text-blue-300 text-xs md:text-sm font-medium hover:bg-blue-500/20 hover:border-blue-400/50 transition-all duration-300"
+                          className="px-3 py-1 bg-blue-500/10 backdrop-blur-sm border border-blue-500/30 rounded-lg text-blue-300 text-xs md:text-sm font-medium hover:bg-blue-500/20 hover:border-blue-400/50 transition-all duration-300"
                         >
                           {tag}
                         </span>

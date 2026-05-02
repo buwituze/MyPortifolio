@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 // Configuration object for easy management
 const navbarConfig = {
@@ -46,6 +46,8 @@ interface Social {
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // Handle scroll effect
   useEffect(() => {
@@ -88,6 +90,14 @@ const Navbar = () => {
       isMobile ? mobileClasses : desktopClasses
     }`;
 
+    const handleAnchorClick = (e: React.MouseEvent, href: string) => {
+      closeMobileMenu();
+      if (location.pathname !== "/") {
+        e.preventDefault();
+        navigate("/" + href);
+      }
+    };
+
     return (
       <li>
         {item.type === "link" ? (
@@ -99,7 +109,11 @@ const Navbar = () => {
             {item.label}
           </Link>
         ) : (
-          <a href={item.href} className={className} onClick={closeMobileMenu}>
+          <a
+            href={item.href}
+            className={className}
+            onClick={(e) => handleAnchorClick(e, item.href || "")}
+          >
             {item.label}
           </a>
         )}
