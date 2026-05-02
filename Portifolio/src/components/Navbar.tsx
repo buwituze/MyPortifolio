@@ -77,14 +77,14 @@ const Navbar = () => {
     const baseClasses = `
       block no-underline font-medium text-base px-4 py-2 rounded-full
       transition-all duration-300 ease-out relative overflow-hidden
-      hover:text-orange-500 hover:-translate-y-0.5
+      hover:text-blue-500 hover:-translate-y-0.5
     `;
 
     const desktopClasses = isScrolled
-      ? "text-slate-800 hover:bg-orange-500/10"
-      : "text-white/90 hover:bg-orange-500/10";
+      ? "text-slate-800 hover:bg-blue-500/10"
+      : "text-white/90 hover:bg-blue-500/10";
 
-    const mobileClasses = "text-white/90 hover:bg-orange-500/10";
+    const mobileClasses = "text-white/90 hover:bg-blue-500/10";
 
     const className = `${baseClasses} ${
       isMobile ? mobileClasses : desktopClasses
@@ -132,11 +132,11 @@ const Navbar = () => {
     >
       <i
         className={`
-          ${social.icon} text-orange-500 text-xl p-2 rounded-full
-          bg-orange-500/10 transition-all duration-300 ease-out
-          group-hover:text-white group-hover:bg-orange-500 
+          ${social.icon} text-blue-500 text-xl p-2 rounded-full
+          bg-blue-500/10 transition-all duration-300 ease-out
+          group-hover:text-white group-hover:bg-blue-500 
           group-hover:-translate-y-1 group-hover:scale-110
-          group-hover:shadow-lg group-hover:shadow-orange-500/40
+          group-hover:shadow-lg group-hover:shadow-blue-500/40
         `}
       />
     </a>
@@ -186,7 +186,7 @@ const Navbar = () => {
           className="
           list-none flex flex-col
           bg-slate-900/98 backdrop-blur-xl
-          border border-orange-400/20 rounded-lg
+          border border-blue-400/20 rounded-lg
           p-5 gap-2
           shadow-2xl shadow-black/30
         "
@@ -212,7 +212,7 @@ const Navbar = () => {
           ${
             isScrolled
               ? "bg-white/95 border-black/10 shadow-xl shadow-black/15"
-              : "bg-slate-900/95 border-orange-400/20 shadow-2xl shadow-black/30"
+              : "bg-slate-900/95 border-blue-400/20 shadow-2xl shadow-black/30"
           }
           backdrop-blur-xl border rounded-lg px-6 py-2
           flex items-center justify-between w-full
@@ -223,7 +223,7 @@ const Navbar = () => {
           <div className="flex items-center gap-3 cursor-pointer">
             <i
               className={`
-              ${navbarConfig.logo.icon} text-2xl text-orange-500 
+              ${navbarConfig.logo.icon} text-2xl text-blue-500 
               transition-all duration-300 ease-out
             `}
             />
