@@ -23,7 +23,7 @@ const testimonials: Testimonial[] = [
     name: "Peggy Dusenge",
     position: "Former Colleague",
     company: "Jobra",
-    text: "Benitha is a great teammate. She was always the one reviewing PRs, and when problems came up she was there for them and for the fixes. Always on time, and a genuinely good colleague.",
+    text: "Benitha and I always reviewed each other's PRs, and when problems came up she was there for the fixes. Always on time, and genuinely a good colleague.",
   },
   {
     image: "/images/anne.jpeg",
