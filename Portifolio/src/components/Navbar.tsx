@@ -1,270 +1,156 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-// Configuration object for easy management
-const navbarConfig = {
-  logo: {
-    icon: "bx bx-laptop",
-    text: "Benitha Uwituze",
-    fontFamily: "fasthand",
-  },
-  navigationItems: [
-    { type: "anchor", href: "#home", label: "Home" },
-    { type: "anchor", href: "#about", label: "About" },
-    { type: "anchor", href: "#services", label: "Services" },
-    { type: "anchor", href: "#resume", label: "Resume" },
-    { type: "link", to: "/all-projects", label: "Projects" },
-    { type: "anchor", href: "#contact", label: "Contact" },
-  ],
-  socialLinks: [
-    {
-      href: "https://github.com/buwituze",
-      icon: "bx bxl-github",
-      label: "GitHub",
-    },
-    {
-      href: "https://www.linkedin.com/in/benitha-uwituze/",
-      icon: "bx bxl-linkedin-square",
-      label: "LinkedIn",
-    },
-    { href: "", icon: "bx bxl-instagram-alt", label: "Instagram" },
-  ],
-  scrollThreshold: 10,
-};
+const sections = [
+  { id: "about", label: "About" },
+  { id: "services", label: "What I do" },
+  { id: "resume", label: "Work" },
+  { id: "contact", label: "Contact" },
+];
 
-interface NavigationItem {
-  type: string;
-  to?: string;
-  href?: string;
-  label: string;
-}
-interface Social {
-  href: string;
-  icon: string;
-  label: string;
-}
 const Navbar = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeId, setActiveId] = useState<string | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
+  const onHome = location.pathname === "/";
 
-  // Handle scroll effect
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > navbarConfig.scrollThreshold);
-    };
-
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu
-  const closeMobileMenu = () => setMobileMenuOpen(false);
-
-  // Toggle mobile menu
-  const toggleMobileMenu = () => setMobileMenuOpen((prev) => !prev);
-
-  // Navigation item component
-  const NavItem = ({
-    item,
-    isMobile = false,
-  }: {
-    item: NavigationItem;
-    isMobile?: boolean;
-  }) => {
-    const baseClasses = `
-      block no-underline font-medium text-base px-4 py-2 rounded-full
-      transition-all duration-300 ease-out relative overflow-hidden
-      hover:text-blue-500 hover:-translate-y-0.5
-    `;
-
-    const desktopClasses = isScrolled
-      ? "text-slate-800 hover:bg-blue-500/10"
-      : "text-white/90 hover:bg-blue-500/10";
-
-    const mobileClasses = "text-white/90 hover:bg-blue-500/10";
-
-    const className = `${baseClasses} ${
-      isMobile ? mobileClasses : desktopClasses
-    }`;
-
-    const handleAnchorClick = (e: React.MouseEvent, href: string) => {
-      closeMobileMenu();
-      if (location.pathname !== "/") {
-        e.preventDefault();
-        navigate("/" + href);
-      }
-    };
-
-    return (
-      <li>
-        {item.type === "link" ? (
-          <Link
-            to={item.to || "#"}
-            className={className}
-            onClick={closeMobileMenu}
-          >
-            {item.label}
-          </Link>
-        ) : (
-          <a
-            href={item.href}
-            className={className}
-            onClick={(e) => handleAnchorClick(e, item.href || "")}
-          >
-            {item.label}
-          </a>
-        )}
-      </li>
+  // Highlight the section currently in the middle of the viewport
+  useEffect(() => {
+    if (!onHome) {
+      setActiveId(null);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveId(entry.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
     );
+    sections.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [onHome]);
+
+  // Lock page scroll while the mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+  }, [menuOpen]);
+
+  const goToSection = (e: React.MouseEvent, id: string) => {
+    setMenuOpen(false);
+    if (!onHome) {
+      e.preventDefault();
+      navigate(`/#${id}`);
+    }
   };
 
-  // Social link component
-  const SocialLink = ({ social }: { social: Social }) => (
-    <a
-      href={social.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={social.label}
-      className="group"
-    >
-      <i
-        className={`
-          ${social.icon} text-blue-500 text-xl p-2 rounded-full
-          bg-blue-500/10 transition-all duration-300 ease-out
-          group-hover:text-white group-hover:bg-blue-500 
-          group-hover:-translate-y-1 group-hover:scale-110
-          group-hover:shadow-lg group-hover:shadow-blue-500/40
-        `}
-      />
-    </a>
-  );
-
-  // Mobile menu toggle button
-  const MobileMenuToggle = () => (
-    <button
-      className="md:hidden flex flex-col bg-transparent border-none cursor-pointer p-2 gap-1"
-      onClick={toggleMobileMenu}
-      aria-label="Toggle mobile menu"
-      aria-expanded={mobileMenuOpen}
-    >
-      {[1, 2, 3].map((i) => (
-        <span
-          key={i}
-          className={`
-            w-6 h-1 rounded-sm transition-all duration-300 ease-out
-            ${isScrolled ? "bg-slate-800" : "bg-white"}
-            ${
-              mobileMenuOpen && i === 1
-                ? "rotate-45 translate-x-1.5 translate-y-1.5"
-                : ""
-            }
-            ${mobileMenuOpen && i === 2 ? "opacity-0" : ""}
-            ${
-              mobileMenuOpen && i === 3
-                ? "-rotate-45 translate-x-1.5 -translate-y-1.5"
-                : ""
-            }
-          `}
-        />
-      ))}
-    </button>
-  );
-
-  // Mobile menu overlay
-  const MobileMenuOverlay = () => (
-    <>
-      <div
-        className="fixed inset-0 bg-black/50 z-[999]"
-        onClick={closeMobileMenu}
-        aria-hidden="true"
-      />
-      <div className="fixed top-20 left-1/2 transform -translate-x-1/2 z-[1000] w-4/5 max-w-sm">
-        <ul
-          className="
-          list-none flex flex-col
-          bg-slate-900/98 backdrop-blur-xl
-          border border-blue-400/20 rounded-lg
-          p-5 gap-2
-          shadow-2xl shadow-black/30
-        "
-        >
-          {navbarConfig.navigationItems.map((item, index) => (
-            <NavItem key={index} item={item} isMobile />
-          ))}
-        </ul>
-      </div>
-    </>
-  );
-
   return (
-    <>
-      {/* Import Boxicons - scoped to this component */}
-      <style>{`
-        @import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
-      `}</style>
-
-      <header className="fixed top-5 left-1/2 transform -translate-x-1/2 z-[1000] w-[90%] max-w-screen-xl">
-        <div
-          className={`
-          ${
-            isScrolled
-              ? "bg-white/95 border-black/10 shadow-xl shadow-black/15"
-              : "bg-slate-900/95 border-blue-400/20 shadow-2xl shadow-black/30"
-          }
-          backdrop-blur-xl border rounded-lg px-6 py-2
-          flex items-center justify-between w-full
-          transition-all duration-300 ease-out
-        `}
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        isScrolled || menuOpen
+          ? "border-b border-line bg-ink"
+          : "border-b border-transparent bg-transparent"
+      }`}
+    >
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:px-8">
+        <Link
+          to="/"
+          onClick={() => setMenuOpen(false)}
+          className="font-fasthand text-2xl text-paper"
         >
-          {/* Logo Section */}
-          <div className="flex items-center gap-3 cursor-pointer">
-            <i
-              className={`
-              ${navbarConfig.logo.icon} text-2xl text-blue-500 
-              transition-all duration-300 ease-out
-            `}
-            />
-            <h2
-              className={`
-                text-xl font-semibold m-0 transition-all duration-300 ease-out
-                ${isScrolled ? "text-slate-800" : "text-white"}
-              `}
-              style={{ fontFamily: navbarConfig.logo.fontFamily }}
-            >
-              {navbarConfig.logo.text}
-            </h2>
-          </div>
+          Benitha
+        </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:block">
-            <ul className="list-none flex gap-2 m-0 p-0 items-center">
-              {navbarConfig.navigationItems.map((item, index) => (
-                <NavItem key={index} item={item} />
-              ))}
-            </ul>
-          </nav>
+        <nav className="hidden md:block" aria-label="Main">
+          <ul className="flex items-center gap-8 text-sm">
+            {sections.map(({ id, label }) => (
+              <li key={id}>
+                <a
+                  href={`#${id}`}
+                  onClick={(e) => goToSection(e, id)}
+                  aria-current={activeId === id ? "true" : undefined}
+                  className={`relative py-1 transition-colors duration-200 hover:text-paper ${
+                    activeId === id ? "text-paper" : "text-muted"
+                  }`}
+                >
+                  {label}
+                  <span
+                    className={`absolute -bottom-1 left-0 h-px bg-accent transition-all duration-300 ${
+                      activeId === id ? "w-full" : "w-0"
+                    }`}
+                  />
+                </a>
+              </li>
+            ))}
+            <li>
+              <Link
+                to="/all-projects"
+                className={`rounded-md border px-3 py-1.5 transition-colors duration-200 ${
+                  location.pathname === "/all-projects"
+                    ? "border-paper text-paper"
+                    : "border-line text-muted hover:border-paper hover:text-paper"
+                }`}
+              >
+                All projects
+              </Link>
+            </li>
+          </ul>
+        </nav>
 
-          {/* Right Section: Social Links & Mobile Toggle */}
-          <div className="flex items-center gap-5">
-            {/* Social Links */}
-            <div className="flex gap-3 items-center">
-              {navbarConfig.socialLinks.map((social, index) => (
-                <SocialLink key={index} social={social} />
-              ))}
-            </div>
+        <button
+          className="font-mono text-xs uppercase tracking-[0.2em] text-paper md:hidden"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
+        >
+          {menuOpen ? "Close" : "Menu"}
+        </button>
+      </div>
 
-            {/* Mobile Menu Toggle */}
-            <MobileMenuToggle />
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {mobileMenuOpen && <MobileMenuOverlay />}
-      </header>
-    </>
+      {menuOpen && (
+        <nav
+          id="mobile-menu"
+          aria-label="Mobile"
+          className="fixed inset-x-0 bottom-0 top-16 bg-ink px-5 pt-10 md:hidden"
+        >
+          <ul className="space-y-2">
+            {sections.map(({ id, label }) => (
+              <li key={id}>
+                <a
+                  href={`#${id}`}
+                  onClick={(e) => goToSection(e, id)}
+                  className="block border-b border-line py-4 font-display text-4xl text-paper"
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+            <li>
+              <Link
+                to="/all-projects"
+                onClick={() => setMenuOpen(false)}
+                className="block border-b border-line py-4 font-display text-4xl italic text-paper"
+              >
+                All projects
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      )}
+    </header>
   );
 };
 

@@ -1,4 +1,41 @@
-import { FormEvent, useState, useEffect, useRef } from "react";
+import { FormEvent, useState } from "react";
+import Reveal from "./ui/Reveal";
+import SectionHeading from "./ui/SectionHeading";
+
+const EMAIL = "benithatuze15@gmail.com";
+
+const channels = [
+  {
+    label: "LinkedIn",
+    value: "benitha-uwituze",
+    href: "https://www.linkedin.com/in/benitha-uwituze/",
+  },
+  { label: "GitHub", value: "buwituze", href: "https://github.com/buwituze" },
+  {
+    label: "Medium",
+    value: "@benithatuze15",
+    href: "https://medium.com/@benithatuze15",
+  },
+];
+
+const fields = [
+  { name: "name", label: "Name", type: "text", placeholder: "Your name" },
+  {
+    name: "email",
+    label: "Email",
+    type: "email",
+    placeholder: "you@company.com",
+  },
+  {
+    name: "subject",
+    label: "Subject",
+    type: "text",
+    placeholder: "What's it about?",
+  },
+] as const;
+
+const inputClass =
+  "w-full border-0 border-b border-line bg-transparent px-0 py-3 text-paper placeholder-muted/60 transition-colors duration-200 focus:border-accent focus:outline-none focus:ring-0";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -7,105 +44,28 @@ const Contact = () => {
     subject: "",
     message: "",
   });
-
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{
     success?: boolean;
     message?: string;
   } | null>(null);
-  const [_, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  // Intersection Observer to detect when section is in view
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 },
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
-
-  // Styles for falling animation
-  const fallingHeadingStyle = `
-    @keyframes fallBounce {
-      0% {
-        transform: translateY(-400px);
-        opacity: 0;
-      }
-      70% {
-        transform: translateY(0);
-        opacity: 1;
-      }
-      85% {
-        transform: translateY(-20px);
-      }
-      100% {
-        transform: translateY(0);
-      }
-    }
-    
-    .falling-heading {
-      animation: fallBounce 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    }
-  `;
-
-  // Word Sphere State
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [words] = useState([
-    "React",
-    "TypeScript",
-    "JavaScript",
-    "CSS",
-    "HTML",
-    "Node.js",
-    "Design",
-    "Creative",
-    "Innovation",
-    "Portfolio",
-    "Frontend",
-    "Backend",
-    "API",
-    "Database",
-    "UI/UX",
-    "Dashboards",
-    "Responsive",
-    "Animation",
-    "Performance",
-    "Testing",
-    "Git",
-    "ML Models",
-  ]);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  const [copied, setCopied] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    setFormData((prevState) => ({ ...prevState, [name]: value }));
+  };
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.location.href = `mailto:${EMAIL}`;
+    }
   };
 
   const sendMail = async (e: FormEvent) => {
@@ -114,34 +74,26 @@ const Contact = () => {
     setSubmitStatus(null);
 
     try {
-      // Using EmailJS as in your original code
       // @ts-ignore - EmailJS is loaded via script tag
       await emailjs.send("service_id", "template_id", {
         from_name: formData.name,
         to_name: "Benitha",
         from_email: formData.email,
-        to_email: "benithatuze@gmail.com",
+        to_email: EMAIL,
         subject: formData.subject,
         message: formData.message,
       });
 
       setSubmitStatus({
         success: true,
-        message: "Message sent successfully!",
+        message: "Thanks! Your message is on its way.",
       });
-
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
+      setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
       console.error("Error sending email:", error);
       setSubmitStatus({
         success: false,
-        message: "Failed to send message. Please try again later.",
+        message: `That didn't send. You can email me directly at ${EMAIL}.`,
       });
     } finally {
       setIsSubmitting(false);
@@ -150,249 +102,126 @@ const Contact = () => {
 
   return (
     <section
-      ref={sectionRef}
-      className="relative min-h-screen bg-transparent pt-12 pb-20 px-4 md:px-8 lg:px-12 overflow-hidden"
       id="contact"
+      className="mx-auto max-w-6xl border-t border-line px-5 py-24 md:px-8 md:py-32"
     >
-      {/* Inject animation styles */}
-      <style>{fallingHeadingStyle}</style>
+      <SectionHeading
+        label="Contact"
+        title={
+          <>
+            Let's <span className="italic">talk.</span>
+          </>
+        }
+      />
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16 overflow-hidden pt-32">
-          <h2
-            className={`text-2xl md:text-2xl text-blue-500 lg:text-3xl font-bold mb-6 ${isVisible ? "falling-heading" : "opacity-0"}`}
-          >
-            Contact Me
-          </h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Ready to bring your ideas to life? Let's connect and create
-            something amazing together!
-          </p>
-        </div>
-
-        {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Left Side - 3D Word Sphere */}
-          <div className="flex items-center justify-center">
-            <div
-              ref={containerRef}
-              className="word-sphere-container relative w-full max-w-lg aspect-square"
-              style={{ perspective: "1000px" }}
+      <div className="grid gap-16 md:grid-cols-12 md:gap-8">
+        <Reveal className="md:col-span-5 md:col-start-4">
+          <p className="text-muted">Email is the quickest way to reach me.</p>
+          <div className="mt-3 flex flex-wrap items-baseline gap-x-4 gap-y-2">
+            <a
+              href={`mailto:${EMAIL}`}
+              className="link-u font-display text-3xl text-paper md:text-4xl"
             >
-              <div className="word-sphere absolute inset-0">
-                {words.map((word, index) => {
-                  const phi = Math.acos(-1 + (2 * index) / words.length);
-                  const theta = Math.sqrt(words.length * Math.PI) * phi;
-
-                  const x = 150 * Math.cos(theta) * Math.sin(phi);
-                  const y = 150 * Math.sin(theta) * Math.sin(phi);
-                  const z = 150 * Math.cos(phi);
-
-                  return (
-                    <span
-                      key={index}
-                      className="word-sphere-item absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-orange-500 font-semibold whitespace-nowrap transition-all duration-300 hover:text-orange-500 hover:scale-125 cursor-default"
-                      style={{
-                        transform: `translate(-50%, -50%) translate3d(${x}px, ${y}px, ${z}px)`,
-                        fontSize: `${14 + (z / 150) * 8}px`,
-                        opacity: (z + 150) / 300,
-                        zIndex: Math.round(z),
-                      }}
-                    >
-                      {word}
-                    </span>
-                  );
-                })}
-              </div>
-            </div>
+              {EMAIL}
+            </a>
+            <button
+              type="button"
+              onClick={copyEmail}
+              className="font-mono text-xs uppercase tracking-[0.2em] text-muted transition-colors duration-200 hover:text-paper"
+              aria-live="polite"
+            >
+              {copied ? "Copied ✓" : "Copy"}
+            </button>
           </div>
 
-          {/* Right Side - Contact Form */}
-          <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-md rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-white mb-8 text-center">
-              Connect with Me
-            </h3>
-
-            <div className="space-y-4">
-              {/* Name Field */}
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-white/80 mb-1"
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="e.g.: Debolla Joe"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 bg-slate-800/50 border border-slate-600/50 rounded-xl text-white text-sm placeholder-white/50 focus:outline-none"
-                />
-              </div>
-
-              {/* Email Field */}
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-white/80 mb-1"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="e.g.: debolla.joe@example.com"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 bg-slate-800/50 border border-slate-600/50 rounded-xl text-white text-sm placeholder-white/50 focus:outline-none"
-                />
-              </div>
-
-              {/* Subject Field */}
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium text-white/80 mb-1"
-                >
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  name="subject"
-                  id="subject"
-                  placeholder="e.g.: Project Collaboration Inquiry"
-                  required
-                  value={formData.subject}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 bg-slate-800/50 border border-slate-600/50 rounded-xl text-white text-sm placeholder-white/50 focus:outline-none"
-                />
-              </div>
-
-              {/* Message Field */}
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-white/80 mb-1"
-                >
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  id="message"
-                  placeholder="e.g.: I'd like to discuss a potential project collaboration..."
-                  required
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={4}
-                  className="w-full px-4 py-2 bg-slate-800/50 border border-slate-600/50 rounded-xl text-white text-sm placeholder-white/50 focus:outline-none resize-none"
-                ></textarea>
-              </div>
-
-              {/* Submit Button */}
+          <dl className="mt-12">
+            {channels.map((channel) => (
               <div
-                onClick={sendMail}
-                className="w-full py-3 bg-blue-500 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl cursor-pointer text-center"
+                key={channel.label}
+                className="flex justify-between gap-4 border-t border-line py-3 text-sm"
               >
-                {isSubmitting ? (
-                  <div className="flex items-center justify-center gap-2">
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                    Sending...
-                  </div>
-                ) : (
-                  <div className="flex items-center justify-center gap-2">
-                    Send Message
-                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
-                      <path
-                        d="M7 17L17 7M17 7H7M17 7V17"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </div>
-                )}
+                <dt className="text-muted">{channel.label}</dt>
+                <dd>
+                  <a
+                    href={channel.href}
+                    target={
+                      channel.href.startsWith("http") ? "_blank" : undefined
+                    }
+                    rel="noopener noreferrer"
+                    className="link-u text-paper"
+                  >
+                    {channel.value}
+                  </a>
+                </dd>
               </div>
-
-              {/* Status Message */}
-              {submitStatus && (
-                <div
-                  className={`p-4 rounded-xl text-center font-medium transition-all duration-300 ${
-                    submitStatus.success
-                      ? "bg-green-500/20 text-green-400 border border-green-500/30"
-                      : "bg-red-500/20 text-red-400 border border-red-500/30"
-                  }`}
-                >
-                  {submitStatus.message}
-                </div>
-              )}
+            ))}
+            <div className="flex justify-between gap-4 border-t border-line py-3 text-sm">
+              <dt className="text-muted">Location</dt>
+              <dd className="text-paper">Kigali, Rwanda (UTC+2)</dd>
             </div>
-          </div>
-        </div>
-      </div>
+          </dl>
+        </Reveal>
 
-      {/* Custom Animation Styles */}
-      <style>{`
-        @keyframes slideInFromLeft {
-          from {
-            opacity: 0;
-            transform: translateX(-40px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        
-        @keyframes slideInFromRight {
-          from {
-            opacity: 0;
-            transform: translateX(40px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        
-        @keyframes rotateSphere {
-          from {
-            transform: rotateY(0deg);
-          }
-          to {
-            transform: rotateY(360deg);
-          }
-        }
-        
-        .grid > div:first-child {
-          animation: slideInFromLeft 0.8s ease-out forwards;
-        }
-        
-        .grid > div:last-child {
-          animation: slideInFromRight 0.8s ease-out forwards;
-        }
-        
-        .word-sphere {
-          transform-style: preserve-3d;
-          animation: rotateSphere 30s linear infinite;
-        }
-        
-        .word-sphere:hover {
-          animation-play-state: paused;
-        }
-        
-        .word-sphere-item {
-          user-select: none;
-          text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-        }
-      `}</style>
+        <Reveal delay={100} className="md:col-span-4">
+          <form onSubmit={sendMail} className="space-y-8">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
+              Or leave a message
+            </p>
+            {fields.map((field) => (
+              <div key={field.name}>
+                <label
+                  htmlFor={field.name}
+                  className="block text-sm text-muted"
+                >
+                  {field.label}
+                </label>
+                <input
+                  id={field.name}
+                  name={field.name}
+                  type={field.type}
+                  placeholder={field.placeholder}
+                  required
+                  value={formData[field.name]}
+                  onChange={handleChange}
+                  className={inputClass}
+                />
+              </div>
+            ))}
+            <div>
+              <label htmlFor="message" className="block text-sm text-muted">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="A few lines about your project or role"
+                required
+                rows={4}
+                value={formData.message}
+                onChange={handleChange}
+                className={`${inputClass} resize-none`}
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="rounded-md bg-paper px-5 py-3 text-sm font-medium text-ink transition-colors duration-200 hover:bg-accent disabled:opacity-60"
+            >
+              {isSubmitting ? "Sending…" : "Send message"}
+            </button>
+
+            {submitStatus && (
+              <p
+                role="status"
+                className={`text-sm ${submitStatus.success ? "text-paper" : "text-muted"}`}
+              >
+                {submitStatus.message}
+              </p>
+            )}
+          </form>
+        </Reveal>
+      </div>
     </section>
   );
 };

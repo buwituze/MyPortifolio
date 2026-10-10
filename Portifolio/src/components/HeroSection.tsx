@@ -1,145 +1,66 @@
-import { useState, useEffect } from "react";
+import Reveal from "./ui/Reveal";
 
 const HeroSection = () => {
-  const [displayText, setDisplayText] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  const techStack = [
-    "FULL-STACK DEVELOPER",
-    "MACHINE LEARNING",
-    "SALESFORCE ADMIN",
-    "PYTHON DEVELOPER",
-    "UI/UX DESIGNER",
+  const facts = [
+    { label: "Now focusing on", value: "Machine learning & data" },
+    { label: "Based in", value: "Kigali, Rwanda" },
+    { label: "Education", value: "Software Engineering graduate, ALU" },
   ];
-
-  const currentYear = new Date().getFullYear();
-
-  // Typing animation effect
-  useEffect(() => {
-    const currentText = techStack[currentIndex];
-    const typingSpeed = isDeleting ? 50 : 100;
-
-    const timer = setTimeout(() => {
-      if (!isDeleting) {
-        if (displayText.length < currentText.length) {
-          setDisplayText(currentText.substring(0, displayText.length + 1));
-        } else {
-          setTimeout(() => setIsDeleting(true), 2000);
-        }
-      } else {
-        if (displayText.length > 0) {
-          setDisplayText(displayText.substring(0, displayText.length - 1));
-        } else {
-          setIsDeleting(false);
-          setCurrentIndex((prev) => (prev + 1) % techStack.length);
-        }
-      }
-    }, typingSpeed);
-
-    return () => clearTimeout(timer);
-  }, [displayText, isDeleting, currentIndex]);
 
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center px-4 md:px-8 lg:px-12 pt-20"
       id="home"
+      className="mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-end px-5 pb-16 pt-32 md:px-8 md:pb-20"
     >
-      {/* Background Gradient */}
-      {/* <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div> */}
+      <Reveal>
+        <p className="mb-6 font-mono text-xs uppercase tracking-[0.2em] text-muted">
+          Software Engineer &amp; Salesforce Admin
+        </p>
+        <h1 className="font-display text-[17vw] leading-[0.9] text-paper md:text-[10rem]">
+          Benitha
+          <br />
+          <span className="italic">Uwituze</span>
+        </h1>
+      </Reveal>
 
-      {/* Centered Content */}
-      <div className="relative z-10 w-full max-w-4xl mx-auto text-center space-y-3">
-        {/* Tech Stack - Animated with letter spacing */}
-        <div className="min-h-[0px] flex items-center justify-center">
-          <p className="text-sm md:text-base text-white/60 tracking-[1em] md:tracking-[1.3em] uppercase font-light">
-            {displayText}
-            <span className="animate-pulse">|</span>
-          </p>
-        </div>
+      <Reveal
+        delay={150}
+        className="mt-10 grid gap-10 md:mt-14 md:grid-cols-12 md:gap-8"
+      >
+        <p className="text-xl leading-relaxed text-paper/90 md:col-span-7 md:text-2xl">
+          I build machine learning systems and the software around them, from
+          the data pipeline to the interface people actually use.
+        </p>
 
-        {/* Portfolio Title with Experience Chip */}
-        <div className="relative inline-block">
-          <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold text-white tracking-tight">
-            PORTFOLIO
-          </h1>
-
-          {/* Years of Experience Chip - Right side, slightly down */}
-          <div className="hidden md:block absolute top-5 -right-16 md:-right-20 lg:-right-32 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-full text-xs md:text-sm font-semibold whitespace-nowrap shadow-lg">
-            3 Years of Experience
-          </div>
-        </div>
-
-        {/* Name and Year - Aligned horizontally */}
-        <div className="flex justify-between items-center w-full px-4 md:px-12 lg:px-16 pt-0">
-          <h2 className="text-xl md:text-xl lg:text-xl md:ml-14 font-bold bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">
-            Benitha Uwituze
-          </h2>
-          <p className="text-xl md:text-xl lg:text-xl md:mr-14 bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">
-            {currentYear}
-          </p>
-        </div>
-
-        {/* CTA Buttons - Blue styled */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center pt-20 md:pt-8">
+        <div className="flex flex-wrap items-center gap-6 md:col-span-5 md:justify-end">
           <a
             href="#contact"
-            className="group relative inline-flex items-center justify-center gap-2 px-8 py-2.5 bg-blue-900/20 text-slate-200 font-semibold rounded-full border-2 border-blue-500/40 backdrop-blur-md transition-all duration-300 hover:bg-blue-500/30 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/30"
+            className="rounded-md bg-paper px-5 py-3 text-sm font-medium text-ink transition-colors duration-200 hover:bg-accent"
           >
-            <span className="relative z-10">Let's Connect</span>
-            <svg
-              className="w-5 h-5 relative z-10"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                d="M7 17L17 7M17 7H7M17 7V17"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            Get in touch
           </a>
-
           <a
             href="/Benitha Uwituze Rutagengwa - CV.pdf"
             download="Benitha Uwituze Rutagengwa - CV.pdf"
-            className="group relative inline-flex items-center justify-center gap-2 px-8 py-2.5 bg-blue-900/20 text-slate-200 font-semibold rounded-full border-2 border-blue-500/40 backdrop-blur-md transition-all duration-300 hover:bg-blue-500/30 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/30"
+            className="link-u text-sm text-paper"
           >
-            <svg
-              className="w-5 h-5 relative z-10"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <polyline
-                points="7,10 12,15 17,10"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <line
-                x1="12"
-                y1="15"
-                x2="12"
-                y2="3"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-            <span className="relative z-10">Download CV</span>
+            Download CV ↓
           </a>
         </div>
-      </div>
+      </Reveal>
+
+      <Reveal delay={300}>
+        <dl className="mt-16 grid gap-6 border-t border-line pt-6 sm:grid-cols-3">
+          {facts.map((fact) => (
+            <div key={fact.label}>
+              <dt className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
+                {fact.label}
+              </dt>
+              <dd className="mt-2 text-sm text-paper">{fact.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </Reveal>
     </section>
   );
 };
